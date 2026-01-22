@@ -18,5 +18,5 @@
 
 ### Phase 4: Polish & Accessibility
 - [x] Task: Add `prefers-reduced-motion` overrides [4e4383e]
-- [~] Task: Fine-tune staggering duration and easing curves
+- [x] Task: Fine-tune staggering duration and easing curves [4e8b1da]
 - [ ] Task: Conductor - User Manual Verification 'Quality & Accessibility' (Protocol in workflow.md)
