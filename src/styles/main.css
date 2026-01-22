@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (.dark &);
+
 @theme {
   --font-display: Syncopate, sans-serif;
   --font-mono: "Space Mono", monospace;

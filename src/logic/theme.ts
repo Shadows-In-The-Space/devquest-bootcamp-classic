@@ -18,17 +18,28 @@ export class ThemeManager {
     private bindEvents(): void {
         const toggleBtn = document.getElementById('theme-toggle');
         if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => this.toggle());
+            toggleBtn.addEventListener('click', () => {
+                console.log('🔵 Theme toggle button clicked!');
+                this.toggle();
+            });
+            console.log('✓ Theme toggle button bound successfully');
+        } else {
+            console.error('✗ Theme toggle button (#theme-toggle) not found in DOM');
         }
     }
 
     public toggle(): void {
+        console.log('🟢 Toggle method called');
+        console.log('Current theme:', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+
         if (document.documentElement.classList.contains('dark')) {
             document.documentElement.classList.remove('dark');
             localStorage.setItem('theme', 'light');
+            console.log('➡️  Switched to LIGHT mode');
         } else {
             document.documentElement.classList.add('dark');
             localStorage.setItem('theme', 'dark');
+            console.log('➡️  Switched to DARK mode');
         }
     }
 }
