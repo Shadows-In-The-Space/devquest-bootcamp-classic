@@ -2,7 +2,7 @@
 
 This plan follows the TDD workflow and modularity principles.
 
-## Phase 1: Infrastructure & Style Extraction
+## Phase 1: Infrastructure & Style Extraction [checkpoint: d5c64a8]
 Extract custom CSS into dedicated files and verify the build.
 
 - [x] **Task: Extract Custom CSS**
