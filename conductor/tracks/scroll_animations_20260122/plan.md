@@ -6,9 +6,9 @@
 - [x] Task: Conductor - User Manual Verification 'CSS Architecture' (Protocol in workflow.md) [fe110ea]
 
 ### Phase 2: Core Logic (TDD)
-- [ ] Task: Write failing tests for `StaggeredRevealController` (delay calculations)
-- [ ] Task: Implement `StaggeredRevealController` in `src/logic/animations.ts`
-- [ ] Task: Integrate `IntersectionObserver` for `[data-reveal-container]`
+- [x] Task: Write failing tests for `StaggeredRevealController` (delay calculations) [8808f9f]
+- [x] Task: Implement `StaggeredRevealController` in `src/logic/animations.ts` [c20c82c]
+- [x] Task: Integrate `IntersectionObserver` for `[data-reveal-container]` [c20c82c]
 - [ ] Task: Conductor - User Manual Verification 'Animation Logic' (Protocol in workflow.md)
 
 ### Phase 3: HTML Integration
