@@ -70,16 +70,23 @@ export class TextGlitcher {
 
     private processNode(node: Node): void {
         if (node.nodeType === Node.TEXT_NODE) {
-            const text = node.textContent || '';
-            // Allow spaces but skip tabs/newlines if they are just formatting
-            // However, pre-wrap might depend on them. 
-            // For this H1, standard line breaks are via <br>.
-            // Let's just split everything.
+            let text = node.textContent || '';
 
-            if (text.trim().length === 0) return; // Skip purely whitespace nodes strictly?
+            // Strictly skip purely whitespace nodes (indentation between elements)
+            if (text.trim().length === 0) return;
+
+            // Normalize whitespace:
+            // 1. Collapse all internal whitespace (newlines/tabs/spaces) to single space
+            // 2. Trim leading/trailing whitespace (formatting)
+            text = text.replace(/\s+/g, ' ').trim();
+
+            if (text.length === 0) return;
 
             const fragment = document.createDocumentFragment();
             text.split('').forEach(char => {
+                // Replace normal space with non-breaking space to prevent collapse
+                if (char === ' ') char = '\u00A0';
+
                 const span = document.createElement('span');
                 span.textContent = char;
                 span.style.setProperty('--delay', Math.random().toString());
@@ -127,4 +134,3 @@ export class TextGlitcher {
         });
     }
 }
-
