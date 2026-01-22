@@ -9,5 +9,5 @@
 - **Vite:** Next-generation frontend tool for fast development and optimized production builds.
 - **Node.js:** Runtime environment for development tools.
 
-## APIs & Services
-- **Gemini API:** Used for content generation and AI features (referenced in `vite.config.ts`).
+## Browser APIs
+- **IntersectionObserver API:** Native browser API for scroll-triggered staggered reveal animations.
