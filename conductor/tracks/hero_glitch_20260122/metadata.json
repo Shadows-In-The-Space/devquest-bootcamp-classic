@@ -1,0 +1,8 @@
+{
+  "track_id": "hero_glitch_20260122",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-01-22T12:35:00Z",
+  "updated_at": "2026-01-22T12:35:00Z",
+  "description": "Feature: Hero section interactive glitch reveal animation on load"
+}

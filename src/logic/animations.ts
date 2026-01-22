@@ -55,3 +55,76 @@ export class AnimationSystem {
         });
     }
 }
+
+export class TextGlitcher {
+    private element: HTMLElement;
+    private chars: HTMLElement[] = [];
+
+    constructor(element: HTMLElement) {
+        this.element = element;
+    }
+
+    public splitText(): void {
+        this.processNode(this.element);
+    }
+
+    private processNode(node: Node): void {
+        if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.textContent || '';
+            // Allow spaces but skip tabs/newlines if they are just formatting
+            // However, pre-wrap might depend on them. 
+            // For this H1, standard line breaks are via <br>.
+            // Let's just split everything.
+
+            if (text.trim().length === 0) return; // Skip purely whitespace nodes strictly?
+
+            const fragment = document.createDocumentFragment();
+            text.split('').forEach(char => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.setProperty('--delay', Math.random().toString());
+                span.className = 'inline-block opacity-0'; // Start hidden
+                fragment.appendChild(span);
+                this.chars.push(span);
+            });
+            node.parentNode?.replaceChild(fragment, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            const el = node as HTMLElement;
+            if (['BR', 'IMG', 'SVG', 'SCRIPT', 'STYLE'].includes(el.tagName)) return;
+
+            Array.from(el.childNodes).forEach(child => this.processNode(child));
+        }
+    }
+
+    public reveal(): void {
+        if (this.chars.length === 0) return;
+
+        // Reveal the container
+        this.element.style.opacity = '1';
+
+        this.chars.forEach(span => {
+            // Read the delay from the CSS variable (0.0 - 1.0)
+            const rawDelay = parseFloat(span.style.getPropertyValue('--delay') || '0');
+            const delayMs = rawDelay * 1000; // Spread over 1s
+
+            // Initially invisible (handled by CSS reveal-visible-letter? 
+            // no, wait, the spans are just spans. The container was opacity-0.
+            // But if container becomes opacity 1, all spans become visible unless we hide them.
+            // We should probably hide them initially in splitText?
+            // "Letters reveal one-by-one". 
+            // So splitText should probably set opacity 0 on spans.
+
+            setTimeout(() => {
+                span.classList.add('reveal-visible-letter');
+                span.classList.add('glitching');
+
+                // Stop glitching after some time (e.g. 200ms - 500ms)
+                setTimeout(() => {
+                    span.classList.remove('glitching');
+                }, 200 + Math.random() * 300);
+
+            }, delayMs);
+        });
+    }
+}
+

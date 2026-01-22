@@ -11,3 +11,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [ ] **Track: bug fix: The Light and Darkmode doesn`t work anymore.**
 *Link: [./tracks/fix_dark_mode_20260122/](./tracks/fix_dark_mode_20260122/)*
+
+---
+
+- [ ] **Track: Hero section interactive glitch reveal animation on load**
+*Link: [./tracks/hero_glitch_20260122/](./tracks/hero_glitch_20260122/)*
