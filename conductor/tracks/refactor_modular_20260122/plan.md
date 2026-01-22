@@ -29,9 +29,9 @@ Move embedded JavaScript logic to modular TypeScript files.
 ## Phase 3: Final Cleanup & Integration
 Finalize the modular structure and ensure zero regressions.
 
-- [ ] **Task: Clean index.html**
-    - [ ] Remove all remaining embedded script tags.
-    - [ ] Initialize logic from a main entry point (e.g., `src/main.ts`).
-- [ ] **Task: Verify Build and Deployability**
-    - [ ] Run `npm run build` and verify output.
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3: Final Cleanup & Integration' (Protocol in workflow.md)**
+- [x] **Task: Clean index.html**
+    - [x] Remove all remaining embedded script tags.
+    - [x] Initialize logic from a main entry point (e.g., `src/main.ts`).
+- [x] **Task: Verify Build and Deployability**
+    - [x] Run `npm run build` and verify output.
+- [x] **Task: Conductor - User Manual Verification 'Phase 3: Final Cleanup & Integration' (Protocol in workflow.md)**

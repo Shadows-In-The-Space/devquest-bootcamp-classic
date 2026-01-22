@@ -1,6 +1,7 @@
 export class ThemeManager {
     constructor() {
         this.init();
+        this.bindEvents();
     }
 
     private init(): void {
@@ -11,6 +12,13 @@ export class ThemeManager {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
+        }
+    }
+
+    private bindEvents(): void {
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => this.toggle());
         }
     }
 
