@@ -13,7 +13,7 @@ Extract custom CSS into dedicated files and verify the build.
     - [ ] Ensure `src/styles/main.css` is correctly bundled by Vite.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 1: Infrastructure & Style Extraction' (Protocol in workflow.md)**
 
-## Phase 2: Logic Extraction (TypeScript)
+## Phase 2: Logic Extraction (TypeScript) [checkpoint: recent_sha]
 Move embedded JavaScript logic to modular TypeScript files.
 
 - [x] **Task: Extract Dark Mode Logic**
