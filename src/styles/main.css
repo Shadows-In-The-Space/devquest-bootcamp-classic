@@ -381,3 +381,22 @@
     opacity: 1;
   }
 }
+
+/* Accessibility: Support for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .reveal-active {
+    animation: none !important;
+  }
+
+  .glitch-text, .glitching {
+    animation: none !important;
+    text-shadow: none !important;
+  }
+}
+
