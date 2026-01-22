@@ -5,11 +5,11 @@ This plan follows the TDD workflow and modularity principles.
 ## Phase 1: Infrastructure & Style Extraction
 Extract custom CSS into dedicated files and verify the build.
 
-- [ ] **Task: Extract Custom CSS**
+- [x] **Task: Extract Custom CSS**
     - [ ] Create `src/styles/main.css`
     - [ ] Move CSS from `index.html` to `src/styles/main.css`
     - [ ] Link `src/styles/main.css` in `index.html`
-- [ ] **Task: Configure Tailwind & CSS in Vite**
+- [x] **Task: Configure Tailwind & CSS in Vite**
     - [ ] Ensure `src/styles/main.css` is correctly bundled by Vite.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 1: Infrastructure & Style Extraction' (Protocol in workflow.md)**
 

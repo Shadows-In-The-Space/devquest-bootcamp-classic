@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevQuest | Graphics Programming Bootcamp</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -40,105 +43,15 @@
         }
     </script>
 
-    <style>
-        /* Custom Styles for things Tailwind can't easily do natively */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 5rem; /* Account for sticky header (h-20 = 5rem) */
-        }
-
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-        }
-        
-        .glitch-text {
-            text-shadow: 3px 0px 0px rgba(50, 215, 75, 0.5), -3px 0px 0px rgba(191, 64, 255, 0.5);
-        }
-
-        .neon-shadow-purple {
-            box-shadow: 0 0 20px rgba(191, 64, 255, 0.4);
-        }
-        
-        .neon-shadow-green {
-            box-shadow: 0 0 20px rgba(50, 215, 75, 0.4);
-        }
-
-        /* Hide scrollbar for cleaner look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #bf40ff;
-            border-radius: 4px;
-        }
-
-        /* Scroll Reveal Animation Classes */
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
-            will-change: opacity, transform;
-        }
-        
-        .reveal-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Focus visible styles for keyboard navigation */
-        :focus-visible {
-            outline: 2px solid #bf40ff;
-            outline-offset: 2px;
-        }
-
-        /* Pulse Animations */
-        @keyframes pulse-purple {
-            0% { box-shadow: 0 0 0 0 rgba(191, 64, 255, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(191, 64, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(191, 64, 255, 0); }
-        }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(50, 215, 75, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(50, 215, 75, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(50, 215, 75, 0); }
-        }
-
-        .animate-pulse-purple {
-            animation: pulse-purple 2s infinite;
-        }
-        .animate-pulse-green {
-            animation: pulse-green 2s infinite;
-        }
-
-        /* Hero Image Breathing Animation */
-        @keyframes hero-breathe {
-            0%, 100% { transform: scale(1.1); }
-            50% { transform: scale(1.2); }
-        }
-        .animate-hero-breathe {
-            animation: hero-breathe 10s ease-in-out infinite;
-            will-change: transform;
-        }
-        
-        /* Level Up Animation */
-        @keyframes level-up-pop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); color: #32D74B; }
-            100% { transform: scale(1); }
-        }
-        .animate-level-up {
-            animation: level-up-pop 0.5s ease-out;
-        }
-    </style>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/src/styles/main.css">
 </head>
+
 <body class="bg-brand-light text-gray-900 dark:bg-brand-dark dark:text-white transition-colors duration-300">
 
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[1000] bg-white text-black px-4 py-2 rounded font-bold shadow-lg">
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[1000] bg-white text-black px-4 py-2 rounded font-bold shadow-lg">
         Skip to content
     </a>
 
@@ -147,18 +60,22 @@
         <!-- XP Bar Track -->
         <div class="h-1.5 w-full bg-gray-200 dark:bg-gray-800">
             <!-- XP Bar Fill -->
-            <div id="xp-bar-fill" 
-                 class="h-full bg-gradient-to-r from-brand-purple to-brand-green shadow-[0_0_10px_rgba(191,64,255,0.8)] transition-all duration-100 ease-out" 
-                 style="width: 0%">
+            <div id="xp-bar-fill"
+                class="h-full bg-gradient-to-r from-brand-purple to-brand-green shadow-[0_0_10px_rgba(191,64,255,0.8)] transition-all duration-100 ease-out"
+                style="width: 0%">
             </div>
         </div>
-        
+
         <!-- Level Badge Overlay -->
         <div class="absolute top-6 right-4 md:right-8 pointer-events-auto">
-            <div class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-gray-200 dark:border-brand-purple/30 rounded-lg p-2 px-4 flex items-center gap-3 shadow-xl transform transition-transform duration-300 hover:scale-105">
+            <div
+                class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-gray-200 dark:border-brand-purple/30 rounded-lg p-2 px-4 flex items-center gap-3 shadow-xl transform transition-transform duration-300 hover:scale-105">
                 <div class="flex flex-col items-end">
-                    <span class="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">Current Rank</span>
-                    <span id="player-rank" class="text-xs font-black text-purple-700 dark:text-brand-purple uppercase glitch-text transition-all duration-300">Novice</span>
+                    <span
+                        class="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">Current
+                        Rank</span>
+                    <span id="player-rank"
+                        class="text-xs font-black text-purple-700 dark:text-brand-purple uppercase glitch-text transition-all duration-300">Novice</span>
                 </div>
                 <div class="h-8 w-px bg-gray-300 dark:bg-white/10"></div>
                 <div class="flex flex-col items-center leading-none">
@@ -170,46 +87,62 @@
     </div>
 
     <!-- Achievement Toast -->
-    <div id="achievement-toast" class="fixed bottom-24 left-4 md:left-8 bg-white dark:bg-brand-dark border-l-4 border-brand-green text-gray-900 dark:text-white px-5 py-4 rounded-r-xl shadow-[0_5px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(50,215,75,0.2)] z-[100] transform translate-y-20 opacity-0 transition-all duration-500 flex items-center gap-4 pointer-events-none max-w-xs">
+    <div id="achievement-toast"
+        class="fixed bottom-24 left-4 md:left-8 bg-white dark:bg-brand-dark border-l-4 border-brand-green text-gray-900 dark:text-white px-5 py-4 rounded-r-xl shadow-[0_5px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(50,215,75,0.2)] z-[100] transform translate-y-20 opacity-0 transition-all duration-500 flex items-center gap-4 pointer-events-none max-w-xs">
         <div class="bg-brand-green/20 p-2 rounded-full">
-            <span class="material-symbols-outlined text-green-600 dark:text-brand-green animate-bounce">military_tech</span>
+            <span
+                class="material-symbols-outlined text-green-600 dark:text-brand-green animate-bounce">military_tech</span>
         </div>
         <div>
-            <p class="text-[10px] uppercase tracking-widest text-green-600 dark:text-brand-green font-bold">Level Up!</p>
+            <p class="text-[10px] uppercase tracking-widest text-green-600 dark:text-brand-green font-bold">Level Up!
+            </p>
             <p id="achievement-text" class="font-bold text-sm">New Rank: Initiate</p>
         </div>
     </div>
 
     <!-- Background Pattern -->
-    <div id="interactive-grid" class="fixed -top-[10%] -left-[10%] w-[120%] h-[120%] bg-[size:40px_40px] bg-grid-pattern pointer-events-none z-0 transition-transform duration-100 ease-out" aria-hidden="true"></div>
+    <div id="interactive-grid"
+        class="fixed -top-[10%] -left-[10%] w-[120%] h-[120%] bg-[size:40px_40px] bg-grid-pattern pointer-events-none z-0 transition-transform duration-100 ease-out"
+        aria-hidden="true"></div>
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-brand-dark/70 border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
+    <header
+        class="sticky top-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-brand-dark/70 border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
-            
+
             <!-- Logo -->
             <a href="#" class="flex items-center gap-3 group cursor-pointer focus:outline-none rounded-lg p-1">
                 <div class="bg-brand-purple/10 p-2 rounded-lg group-hover:bg-brand-purple/20 transition-colors">
                     <span class="material-symbols-outlined text-brand-purple" aria-hidden="true">terminal</span>
                 </div>
-                <span class="text-xl font-bold tracking-widest uppercase text-gray-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors duration-300">DevQuest</span>
+                <span
+                    class="text-xl font-bold tracking-widest uppercase text-gray-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors duration-300">DevQuest</span>
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" aria-label="Main Navigation">
-                <a href="#instructor" class="text-xs font-bold uppercase tracking-[0.15em] text-gray-600 dark:text-gray-300 hover:text-purple-700 dark:hover:text-brand-purple transition-colors duration-300 focus:outline-none rounded p-1">Trainer</a>
-                <a href="#curriculum" class="text-xs font-bold uppercase tracking-[0.15em] text-gray-600 dark:text-gray-300 hover:text-purple-700 dark:hover:text-brand-purple transition-colors duration-300 focus:outline-none rounded p-1">Curriculum</a>
-                <a href="#reviews" class="text-xs font-bold uppercase tracking-[0.15em] text-gray-600 dark:text-gray-300 hover:text-purple-700 dark:hover:text-brand-purple transition-colors duration-300 focus:outline-none rounded p-1">Reviews</a>
+            <nav class="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                aria-label="Main Navigation">
+                <a href="#instructor"
+                    class="text-xs font-bold uppercase tracking-[0.15em] text-gray-600 dark:text-gray-300 hover:text-purple-700 dark:hover:text-brand-purple transition-colors duration-300 focus:outline-none rounded p-1">Trainer</a>
+                <a href="#curriculum"
+                    class="text-xs font-bold uppercase tracking-[0.15em] text-gray-600 dark:text-gray-300 hover:text-purple-700 dark:hover:text-brand-purple transition-colors duration-300 focus:outline-none rounded p-1">Curriculum</a>
+                <a href="#reviews"
+                    class="text-xs font-bold uppercase tracking-[0.15em] text-gray-600 dark:text-gray-300 hover:text-purple-700 dark:hover:text-brand-purple transition-colors duration-300 focus:outline-none rounded p-1">Reviews</a>
             </nav>
 
             <div class="flex items-center gap-4">
                 <!-- Dark Mode Toggle -->
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors focus:outline-none"
+                    aria-label="Toggle Dark Mode">
                     <span class="material-symbols-outlined dark:hidden" aria-hidden="true">dark_mode</span>
-                    <span class="material-symbols-outlined hidden dark:block text-brand-green" aria-hidden="true">light_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block text-brand-green"
+                        aria-hidden="true">light_mode</span>
                 </button>
-                
-                <button class="md:hidden bg-brand-purple/10 text-brand-purple p-2 rounded-lg hover:bg-brand-purple/20 transition-colors focus:outline-none" aria-label="Open menu">
+
+                <button
+                    class="md:hidden bg-brand-purple/10 text-brand-purple p-2 rounded-lg hover:bg-brand-purple/20 transition-colors focus:outline-none"
+                    aria-label="Open menu">
                     <span class="material-symbols-outlined" aria-hidden="true">menu</span>
                 </button>
             </div>
@@ -217,38 +150,50 @@
     </header>
 
     <main id="main-content" class="relative z-10 overflow-x-hidden">
-        
+
         <!-- Hero Section -->
         <section class="reveal-on-scroll relative pt-12 pb-20 lg:pt-24 lg:pb-32 px-6 overflow-hidden">
             <!-- Blobs -->
-            <div id="blob-purple" class="absolute top-20 right-0 w-96 h-96 bg-brand-purple/20 rounded-full blur-[100px] -z-10 transition-transform duration-100 ease-out" aria-hidden="true"></div>
-            <div id="blob-green" class="absolute bottom-0 left-0 w-96 h-96 bg-brand-green/20 rounded-full blur-[100px] -z-10 transition-transform duration-100 ease-out" aria-hidden="true"></div>
+            <div id="blob-purple"
+                class="absolute top-20 right-0 w-96 h-96 bg-brand-purple/20 rounded-full blur-[100px] -z-10 transition-transform duration-100 ease-out"
+                aria-hidden="true"></div>
+            <div id="blob-green"
+                class="absolute bottom-0 left-0 w-96 h-96 bg-brand-green/20 rounded-full blur-[100px] -z-10 transition-transform duration-100 ease-out"
+                aria-hidden="true"></div>
 
             <div class="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
-                
+
                 <!-- Hero Image -->
                 <div class="relative w-full lg:w-1/2 aspect-[4/5] lg:aspect-square">
-                    <div class="absolute inset-0 rounded-[2rem] border-2 border-white/50 dark:border-white/10 overflow-hidden shadow-2xl dark:shadow-brand-purple/20 transform rotate-3 transition-transform hover:rotate-0 duration-500">
+                    <div
+                        class="absolute inset-0 rounded-[2rem] border-2 border-white/50 dark:border-white/10 overflow-hidden shadow-2xl dark:shadow-brand-purple/20 transform rotate-3 transition-transform hover:rotate-0 duration-500">
                         <!-- Wrapper for Zoom Animation -->
                         <div class="w-full h-full animate-hero-breathe">
-                            <img id="hero-img" 
-                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUNEs3MNdyChi8LQCKTf2BcPk-EVF04tBsis6eOPdSV1iFyvG5Ij0kKQbJ_FRbpUN7gIIqtfW8QQtBJ1HuARdEoytm7IkPHzPaK7DFRmPzYXRX2R0lbeS-GfBlqVhi5LKkaSf6nevDkLT_NqVMsnGugXSNi_IoZ8XPt7IY6eXu7IJUS7wSZFojDDqn1YBV678Ou_5Rt8shsgYJ3bofPBIPRxLLpevdJmctwbZ6qM4pl9D1h5Wu0w163FC-PKz4HMC-IdNpja9ahGCc" 
-                                 alt="Student gaming setup" 
-                                 class="w-full h-full object-cover transition-transform duration-100 ease-out will-change-transform">
+                            <img id="hero-img"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUNEs3MNdyChi8LQCKTf2BcPk-EVF04tBsis6eOPdSV1iFyvG5Ij0kKQbJ_FRbpUN7gIIqtfW8QQtBJ1HuARdEoytm7IkPHzPaK7DFRmPzYXRX2R0lbeS-GfBlqVhi5LKkaSf6nevDkLT_NqVMsnGugXSNi_IoZ8XPt7IY6eXu7IJUS7wSZFojDDqn1YBV678Ou_5Rt8shsgYJ3bofPBIPRxLLpevdJmctwbZ6qM4pl9D1h5Wu0w163FC-PKz4HMC-IdNpja9ahGCc"
+                                alt="Student gaming setup"
+                                class="w-full h-full object-cover transition-transform duration-100 ease-out will-change-transform">
                         </div>
-                        
+
                         <!-- Overlay Gradient -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" aria-hidden="true"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" aria-hidden="true">
+                        </div>
                     </div>
 
                     <!-- Floating Badges -->
                     <div class="absolute top-8 -left-4 md:left-8 flex flex-col gap-3 animate-[bounce_3s_infinite]">
-                        <div class="bg-white/90 dark:bg-brand-card/90 backdrop-blur-md border border-brand-green/30 px-5 py-2.5 rounded-full flex items-center gap-3 shadow-lg">
-                            <span class="w-2.5 h-2.5 rounded-full bg-brand-green animate-pulse" aria-hidden="true"></span>
-                            <span class="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white">100% Präsenz</span>
+                        <div
+                            class="bg-white/90 dark:bg-brand-card/90 backdrop-blur-md border border-brand-green/30 px-5 py-2.5 rounded-full flex items-center gap-3 shadow-lg">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-green animate-pulse"
+                                aria-hidden="true"></span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white">100%
+                                Präsenz</span>
                         </div>
-                        <div class="bg-white/90 dark:bg-brand-card/90 backdrop-blur-md border border-brand-purple/30 px-5 py-2.5 rounded-full shadow-lg">
-                            <span class="text-xs font-bold uppercase italic tracking-wider text-purple-700 dark:text-brand-purple">OpenGL & Vulkan</span>
+                        <div
+                            class="bg-white/90 dark:bg-brand-card/90 backdrop-blur-md border border-brand-purple/30 px-5 py-2.5 rounded-full shadow-lg">
+                            <span
+                                class="text-xs font-bold uppercase italic tracking-wider text-purple-700 dark:text-brand-purple">OpenGL
+                                & Vulkan</span>
                         </div>
                     </div>
                 </div>
@@ -256,30 +201,36 @@
                 <!-- Hero Content -->
                 <div class="w-full lg:w-1/2 space-y-8 text-center lg:text-left">
                     <h1 class="text-5xl lg:text-7xl font-black italic uppercase leading-[0.9] tracking-tighter">
-                        Baue echte Spiele <br/>
+                        Baue echte Spiele <br />
                         <span class="text-purple-700 dark:text-brand-purple glitch-text relative inline-block">
                             Mit Echter GPU-Power
-                            <svg class="absolute w-full h-3 bottom-1 left-0 text-brand-green" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                            <svg class="absolute w-full h-3 bottom-1 left-0 text-brand-green" viewBox="0 0 100 10"
+                                preserveAspectRatio="none" aria-hidden="true">
                                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="3" fill="none" />
                             </svg>
                         </span>
                     </h1>
-                    
-                    <p class="text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                        Ein intensives Game-Developer-Bootcamp für alle, die Rendering, Shader und Engine-Grundlagen in Code umsetzen wollen. 
+
+                    <p
+                        class="text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        Ein intensives Game-Developer-Bootcamp für alle, die Rendering, Shader und Engine-Grundlagen in
+                        Code umsetzen wollen.
                         <strong>100% vor Ort. Live. Hands-on.</strong>
                     </p>
 
                     <div class="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
                         <a href="#apply" class="group relative w-full sm:w-auto focus:outline-none rounded-xl">
-                            <div class="absolute inset-0 bg-brand-purple rounded-xl blur opacity-40 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
-                            <button class="animate-pulse-purple relative w-full sm:w-auto px-8 py-4 bg-brand-purple hover:bg-brand-purple/90 text-gray-900 font-black uppercase tracking-[0.2em] rounded-xl border-b-4 border-purple-900 active:border-b-0 active:translate-y-1 transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-purple/50">
+                            <div class="absolute inset-0 bg-brand-purple rounded-xl blur opacity-40 group-hover:opacity-100 transition-opacity duration-300"
+                                aria-hidden="true"></div>
+                            <button
+                                class="animate-pulse-purple relative w-full sm:w-auto px-8 py-4 bg-brand-purple hover:bg-brand-purple/90 text-gray-900 font-black uppercase tracking-[0.2em] rounded-xl border-b-4 border-purple-900 active:border-b-0 active:translate-y-1 transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-purple/50">
                                 Platz sichern
                             </button>
                         </a>
-                        
+
                         <div class="flex items-center gap-3">
-                            <span class="text-xs font-bold uppercase tracking-widest opacity-60">Deep Dive Engineering</span>
+                            <span class="text-xs font-bold uppercase tracking-widest opacity-60">Deep Dive
+                                Engineering</span>
                         </div>
                     </div>
                 </div>
@@ -291,36 +242,44 @@
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row gap-12">
                     <div class="flex-1">
-                        <h2 class="text-3xl font-black italic uppercase tracking-tighter mb-6">Für wen ist <br/><span class="text-green-700 dark:text-brand-green">Dieses Bootcamp?</span></h2>
+                        <h2 class="text-3xl font-black italic uppercase tracking-tighter mb-6">Für wen ist <br /><span
+                                class="text-green-700 dark:text-brand-green">Dieses Bootcamp?</span></h2>
                         <ul class="space-y-4">
                             <li class="flex items-start gap-4">
                                 <span class="material-symbols-outlined text-brand-green font-bold">check_circle</span>
-                                <span class="text-gray-700 dark:text-gray-300">Du willst <strong>Game Dev</strong> technisch ernsthaft verstehen (Shader, Rendering).</span>
+                                <span class="text-gray-700 dark:text-gray-300">Du willst <strong>Game Dev</strong>
+                                    technisch ernsthaft verstehen (Shader, Rendering).</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="material-symbols-outlined text-brand-green font-bold">check_circle</span>
-                                <span class="text-gray-700 dark:text-gray-300">Du bringst Basics in <strong>C/C++</strong> mit.</span>
+                                <span class="text-gray-700 dark:text-gray-300">Du bringst Basics in
+                                    <strong>C/C++</strong> mit.</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="material-symbols-outlined text-brand-green font-bold">check_circle</span>
-                                <span class="text-gray-700 dark:text-gray-300">Du willst nicht nur Tools bedienen, sondern <strong>Technik bauen</strong>.</span>
+                                <span class="text-gray-700 dark:text-gray-300">Du willst nicht nur Tools bedienen,
+                                    sondern <strong>Technik bauen</strong>.</span>
                             </li>
                         </ul>
                     </div>
                     <div class="flex-1 border-l border-gray-200 dark:border-white/10 pl-0 md:pl-12 pt-8 md:pt-0">
-                         <h2 class="text-3xl font-black italic uppercase tracking-tighter mb-6 text-gray-400">Nicht für...</h2>
-                         <ul class="space-y-4 opacity-70">
+                        <h2 class="text-3xl font-black italic uppercase tracking-tighter mb-6 text-gray-400">Nicht
+                            für...</h2>
+                        <ul class="space-y-4 opacity-70">
                             <li class="flex items-start gap-4">
                                 <span class="material-symbols-outlined text-red-500 font-bold">cancel</span>
-                                <span class="text-gray-700 dark:text-gray-300">Reine "No-Code" / Drag-and-Drop Sucher.</span>
+                                <span class="text-gray-700 dark:text-gray-300">Reine "No-Code" / Drag-and-Drop
+                                    Sucher.</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="material-symbols-outlined text-red-500 font-bold">cancel</span>
-                                <span class="text-gray-700 dark:text-gray-300">Leute, die nur Remote/Online-Sessions wollen.</span>
+                                <span class="text-gray-700 dark:text-gray-300">Leute, die nur Remote/Online-Sessions
+                                    wollen.</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="material-symbols-outlined text-red-500 font-bold">cancel</span>
-                                <span class="text-gray-700 dark:text-gray-300">Blender/Art-Fokus ohne Code-Interesse.</span>
+                                <span class="text-gray-700 dark:text-gray-300">Blender/Art-Fokus ohne
+                                    Code-Interesse.</span>
                             </li>
                         </ul>
                     </div>
@@ -335,20 +294,28 @@
                     Dein Lead <span class="text-purple-700 dark:text-brand-purple">Trainer</span>
                 </h2>
 
-                <div class="bg-white dark:bg-brand-card rounded-[2rem] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/5 flex flex-col md:flex-row">
+                <div
+                    class="bg-white dark:bg-brand-card rounded-[2rem] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/5 flex flex-col md:flex-row">
                     <div class="w-full md:w-2/5 relative">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuALhyVIdNHzn-QYTEfn277peMum7rbncdGZf2w1ZDc18o_rCkYRtvujCpiV6l-YdwfN3_-szBSRT_zUBwasfybi4w7EZ6eq8mIY7gIKJUtuB5rsK9WCfJzMN-je8FOF4-KeYppms3ZE9yQnhb8o3UWE0yLTWLdfvwweLOqeFIM15CgB5Ixv5LKxukkkaWThuGiM8wu8KHK-6ZKRDYzSxjQBHuBwluz4IbsCgYPWcT6pSqzir9v4oDeQc_fivxtTBsULv3hvFuuo8Z9k" 
-                             alt="Kai Niklas - Graphics Trainer" 
-                             class="w-full h-full object-cover min-h-[300px]">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r"></div>
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuALhyVIdNHzn-QYTEfn277peMum7rbncdGZf2w1ZDc18o_rCkYRtvujCpiV6l-YdwfN3_-szBSRT_zUBwasfybi4w7EZ6eq8mIY7gIKJUtuB5rsK9WCfJzMN-je8FOF4-KeYppms3ZE9yQnhb8o3UWE0yLTWLdfvwweLOqeFIM15CgB5Ixv5LKxukkkaWThuGiM8wu8KHK-6ZKRDYzSxjQBHuBwluz4IbsCgYPWcT6pSqzir9v4oDeQc_fivxtTBsULv3hvFuuo8Z9k"
+                            alt="Kai Niklas - Graphics Trainer" class="w-full h-full object-cover min-h-[300px]">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r">
+                        </div>
                     </div>
                     <div class="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
-                        <h4 class="text-4xl font-black italic uppercase text-gray-900 dark:text-white mb-2">Kai Niklas</h4>
-                        <p class="text-purple-700 dark:text-brand-purple font-bold uppercase tracking-widest text-sm mb-6">Graphics Engineer & Trainer</p>
-                        
+                        <h4 class="text-4xl font-black italic uppercase text-gray-900 dark:text-white mb-2">Kai Niklas
+                        </h4>
+                        <p
+                            class="text-purple-700 dark:text-brand-purple font-bold uppercase tracking-widest text-sm mb-6">
+                            Graphics Engineer & Trainer</p>
+
                         <div class="space-y-4 text-gray-600 dark:text-gray-300">
-                            <p>Spezialisiert auf <strong>OpenGL (1.1–4.x), ES, WebGL & Vulkan</strong>. Kai leitet das Bootcamp als verantwortlicher Programmierer.</p>
-                            <p class="italic border-l-4 border-brand-green pl-4">"Viele Kurse bleiben an der Oberfläche. Hier geht es um das, was reale Performance bringt: GPU-Pipelines, Buffers und Shader-Architektur."</p>
+                            <p>Spezialisiert auf <strong>OpenGL (1.1–4.x), ES, WebGL & Vulkan</strong>. Kai leitet das
+                                Bootcamp als verantwortlicher Programmierer.</p>
+                            <p class="italic border-l-4 border-brand-green pl-4">"Viele Kurse bleiben an der Oberfläche.
+                                Hier geht es um das, was reale Performance bringt: GPU-Pipelines, Buffers und
+                                Shader-Architektur."</p>
                         </div>
                     </div>
                 </div>
@@ -362,91 +329,128 @@
                     Was du am Ende <span class="text-green-700 dark:text-brand-green">Kannst</span>
                 </h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white dark:bg-brand-card p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(191,64,255,0.3)] dark:hover:shadow-[0_10px_40px_-10px_rgba(50,215,75,0.2)]">
-                        <span class="material-symbols-outlined text-4xl text-purple-700 dark:text-brand-purple mb-4">memory</span>
+                    <div
+                        class="bg-white dark:bg-brand-card p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(191,64,255,0.3)] dark:hover:shadow-[0_10px_40px_-10px_rgba(50,215,75,0.2)]">
+                        <span
+                            class="material-symbols-outlined text-4xl text-purple-700 dark:text-brand-purple mb-4">memory</span>
                         <h3 class="font-bold uppercase mb-2">GPU Pipelines</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Baue eine saubere Render-Pipeline auf, die du wirklich verstehst.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Baue eine saubere Render-Pipeline auf, die
+                            du wirklich verstehst.</p>
                     </div>
-                    <div class="bg-white dark:bg-brand-card p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(191,64,255,0.3)] dark:hover:shadow-[0_10px_40px_-10px_rgba(50,215,75,0.2)]">
-                        <span class="material-symbols-outlined text-4xl text-purple-700 dark:text-brand-purple mb-4">layers</span>
+                    <div
+                        class="bg-white dark:bg-brand-card p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(191,64,255,0.3)] dark:hover:shadow-[0_10px_40px_-10px_rgba(50,215,75,0.2)]">
+                        <span
+                            class="material-symbols-outlined text-4xl text-purple-700 dark:text-brand-purple mb-4">layers</span>
                         <h3 class="font-bold uppercase mb-2">Buffers & Flow</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Beherrsche Color-, Z-Buffer und Framebuffer für komplexe Render-Abläufe.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Beherrsche Color-, Z-Buffer und Framebuffer
+                            für komplexe Render-Abläufe.</p>
                     </div>
-                     <div class="bg-white dark:bg-brand-card p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(191,64,255,0.3)] dark:hover:shadow-[0_10px_40px_-10px_rgba(50,215,75,0.2)]">
-                        <span class="material-symbols-outlined text-4xl text-purple-700 dark:text-brand-purple mb-4">gradient</span>
+                    <div
+                        class="bg-white dark:bg-brand-card p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(191,64,255,0.3)] dark:hover:shadow-[0_10px_40px_-10px_rgba(50,215,75,0.2)]">
+                        <span
+                            class="material-symbols-outlined text-4xl text-purple-700 dark:text-brand-purple mb-4">gradient</span>
                         <h3 class="font-bold uppercase mb-2">Shader Magic</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Programmiere Vertex & Fragment Shader für Licht, Texturen und Effekte.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Programmiere Vertex & Fragment Shader für
+                            Licht, Texturen und Effekte.</p>
                     </div>
-                     <div class="bg-white dark:bg-brand-card p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(191,64,255,0.3)] dark:hover:shadow-[0_10px_40px_-10px_rgba(50,215,75,0.2)]">
-                        <span class="material-symbols-outlined text-4xl text-purple-700 dark:text-brand-purple mb-4">bug_report</span>
+                    <div
+                        class="bg-white dark:bg-brand-card p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(191,64,255,0.3)] dark:hover:shadow-[0_10px_40px_-10px_rgba(50,215,75,0.2)]">
+                        <span
+                            class="material-symbols-outlined text-4xl text-purple-700 dark:text-brand-purple mb-4">bug_report</span>
                         <h3 class="font-bold uppercase mb-2">Debugging</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Lerne Performance systematisch zu messen, statt Fehler nur zu raten.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Lerne Performance systematisch zu messen,
+                            statt Fehler nur zu raten.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Curriculum Section (Renamed from Journey) -->
-        <section id="curriculum" class="reveal-on-scroll py-20 bg-white dark:bg-white/5 border-y border-gray-200 dark:border-white/5 transition-colors">
+        <section id="curriculum"
+            class="reveal-on-scroll py-20 bg-white dark:bg-white/5 border-y border-gray-200 dark:border-white/5 transition-colors">
             <div class="max-w-3xl mx-auto px-6">
                 <h2 class="text-4xl font-black italic uppercase tracking-tighter mb-12">
                     Dein <span class="text-green-700 dark:text-brand-green">Curriculum</span>
                 </h2>
 
                 <div class="relative pl-8 md:pl-12 border-l-2 border-brand-purple/20 space-y-12">
-                    
+
                     <!-- Modul 1 -->
                     <div class="relative group">
-                        <div class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center shadow-[0_0_15px_rgba(191,64,255,0.3)] z-10">
+                        <div
+                            class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center shadow-[0_0_15px_rgba(191,64,255,0.3)] z-10">
                             <span class="text-sm font-black text-purple-700 dark:text-brand-purple">01</span>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">Graphics Foundations</h3>
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Setup, Primitives (Punkte, Linien, Dreiecke), Transformationen & Kamera-Systeme.</p>
+                        <h3
+                            class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">
+                            Graphics Foundations</h3>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Setup, Primitives (Punkte, Linien,
+                            Dreiecke), Transformationen & Kamera-Systeme.</p>
                     </div>
 
                     <!-- Modul 2 -->
                     <div class="relative group">
-                        <div class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center z-10">
+                        <div
+                            class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center z-10">
                             <span class="text-sm font-black text-purple-700 dark:text-brand-purple">02</span>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">Buffers & Render-Flow</h3>
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Verstehe den Datenfluss: Z-Buffer, Framebuffer und Render-Reihenfolge.</p>
+                        <h3
+                            class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">
+                            Buffers & Render-Flow</h3>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Verstehe den Datenfluss: Z-Buffer,
+                            Framebuffer und Render-Reihenfolge.</p>
                     </div>
 
                     <!-- Modul 3 -->
                     <div class="relative group">
-                        <div class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center z-10">
+                        <div
+                            class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center z-10">
                             <span class="text-sm font-black text-purple-700 dark:text-brand-purple">03</span>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">Shading (Modern Pipeline)</h3>
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Fixed vs. Programmable Pipeline. Schreibe deine ersten Shader.</p>
+                        <h3
+                            class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">
+                            Shading (Modern Pipeline)</h3>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Fixed vs. Programmable Pipeline.
+                            Schreibe deine ersten Shader.</p>
                     </div>
 
                     <!-- Modul 4 -->
                     <div class="relative group">
-                        <div class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center z-10">
+                        <div
+                            class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center z-10">
                             <span class="text-sm font-black text-purple-700 dark:text-brand-purple">04</span>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">Textures & Effekte</h3>
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Mapping, Blending, Transparenz und Fog sauber integrieren.</p>
+                        <h3
+                            class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">
+                            Textures & Effekte</h3>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Mapping, Blending, Transparenz und Fog
+                            sauber integrieren.</p>
                     </div>
-                    
+
                     <!-- Modul 5 -->
                     <div class="relative group">
-                        <div class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center z-10">
+                        <div
+                            class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-white dark:bg-brand-card border-2 border-brand-purple flex items-center justify-center z-10">
                             <span class="text-sm font-black text-purple-700 dark:text-brand-purple">05</span>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">Mobile & WebGL</h3>
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Unterschiede OpenGL ES 2.0/3.x und Performance im Browser.</p>
+                        <h3
+                            class="text-xl font-bold uppercase tracking-tight group-hover:text-purple-700 dark:group-hover:text-brand-purple transition-colors">
+                            Mobile & WebGL</h3>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Unterschiede OpenGL ES 2.0/3.x und
+                            Performance im Browser.</p>
                     </div>
 
                     <!-- Capstone -->
                     <div class="relative group">
-                        <div class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-brand-green border-2 border-white dark:border-brand-dark flex items-center justify-center shadow-[0_0_15px_rgba(50,215,75,0.6)] z-10 animate-pulse">
-                            <span class="material-symbols-outlined text-gray-900 text-sm font-bold" aria-hidden="true">code</span>
+                        <div
+                            class="absolute -left-[42px] md:-left-[58px] top-0 w-10 h-10 rounded-full bg-brand-green border-2 border-white dark:border-brand-dark flex items-center justify-center shadow-[0_0_15px_rgba(50,215,75,0.6)] z-10 animate-pulse">
+                            <span class="material-symbols-outlined text-gray-900 text-sm font-bold"
+                                aria-hidden="true">code</span>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight text-green-700 dark:text-brand-green">Capstone: Mini-Engine</h3>
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Baue eine Demo-Engine mit Shader-System, Kamera und Assets als Portfolio-Referenz.</p>
+                        <h3 class="text-xl font-bold uppercase tracking-tight text-green-700 dark:text-brand-green">
+                            Capstone: Mini-Engine</h3>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Baue eine Demo-Engine mit
+                            Shader-System, Kamera und Assets als Portfolio-Referenz.</p>
                     </div>
 
                 </div>
@@ -460,24 +464,31 @@
                     F.A.Q.
                 </h2>
                 <div class="space-y-4">
-                    <div class="bg-gray-50 dark:bg-brand-card p-6 rounded-2xl border border-gray-200 dark:border-white/5">
+                    <div
+                        class="bg-gray-50 dark:bg-brand-card p-6 rounded-2xl border border-gray-200 dark:border-white/5">
                         <h3 class="font-bold text-lg mb-2">Ist das Bootcamp wirklich 100% vor Ort?</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Ja. Alle Sessions sind Präsenz. Wir glauben an Live-Mentoring und direktes Feedback am Code, ohne Remote-Verzögerung.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Ja. Alle Sessions sind Präsenz. Wir glauben an
+                            Live-Mentoring und direktes Feedback am Code, ohne Remote-Verzögerung.</p>
                     </div>
-                    <div class="bg-gray-50 dark:bg-brand-card p-6 rounded-2xl border border-gray-200 dark:border-white/5">
+                    <div
+                        class="bg-gray-50 dark:bg-brand-card p-6 rounded-2xl border border-gray-200 dark:border-white/5">
                         <h3 class="font-bold text-lg mb-2">Brauche ich Mathe-Studium?</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Nein. Aber du lernst genau so viel Matrix/Transformation, wie du für echte 3D-Praxis brauchst.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Nein. Aber du lernst genau so viel
+                            Matrix/Transformation, wie du für echte 3D-Praxis brauchst.</p>
                     </div>
-                     <div class="bg-gray-50 dark:bg-brand-card p-6 rounded-2xl border border-gray-200 dark:border-white/5">
+                    <div
+                        class="bg-gray-50 dark:bg-brand-card p-6 rounded-2xl border border-gray-200 dark:border-white/5">
                         <h3 class="font-bold text-lg mb-2">Für wen ist es optimal?</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Game Devs, Engine-Interessierte und C++ Entwickler, die endlich "Graphics wirklich können" wollen.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Game Devs, Engine-Interessierte und C++ Entwickler,
+                            die endlich "Graphics wirklich können" wollen.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials (Updated Content) -->
-        <section id="reviews" class="reveal-on-scroll py-20 bg-white dark:bg-white/5 border-y border-gray-200 dark:border-white/5 transition-colors">
+        <section id="reviews"
+            class="reveal-on-scroll py-20 bg-white dark:bg-white/5 border-y border-gray-200 dark:border-white/5 transition-colors">
             <div class="max-w-2xl mx-auto px-6">
                 <h2 class="text-4xl font-black italic uppercase tracking-tighter mb-12">
                     Feedback
@@ -485,29 +496,39 @@
 
                 <div class="grid gap-8">
                     <!-- Testimonial 1 -->
-                    <div class="bg-gray-50 dark:bg-brand-card p-8 rounded-[2rem] shadow-lg border border-gray-200 dark:border-white/5 hover:-translate-y-1 transition-transform duration-300">
+                    <div
+                        class="bg-gray-50 dark:bg-brand-card p-8 rounded-[2rem] shadow-lg border border-gray-200 dark:border-white/5 hover:-translate-y-1 transition-transform duration-300">
                         <div class="flex items-center gap-4 mb-6">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5J_X5-MAqAXk-oD9ijo7gc58E6H5ALPUTRqYAD3NDC_GcueY4dIse8kIT0PvR0BZKkhzUyzbU2RTLGw1IOP0bbRTZcF-yhbD7nnQFj4UMhNYk290E7zjaFzYCD8dGIKnJoEjobQdFUdMVe4RbEat7gyzLOpKO6sxNLaEl9JDqZNKPympJCZBp-QAKapA9QqqOEuWbPhpw2WoXqsGvXkR8Jp7kPcXBYVWfsW61WtbwA5XRInyhBRDQnl0UooCk-6TNAY6kkmMQYYvK" 
-                                 class="w-14 h-14 rounded-full border-2 border-brand-purple object-cover" alt="Sarah">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5J_X5-MAqAXk-oD9ijo7gc58E6H5ALPUTRqYAD3NDC_GcueY4dIse8kIT0PvR0BZKkhzUyzbU2RTLGw1IOP0bbRTZcF-yhbD7nnQFj4UMhNYk290E7zjaFzYCD8dGIKnJoEjobQdFUdMVe4RbEat7gyzLOpKO6sxNLaEl9JDqZNKPympJCZBp-QAKapA9QqqOEuWbPhpw2WoXqsGvXkR8Jp7kPcXBYVWfsW61WtbwA5XRInyhBRDQnl0UooCk-6TNAY6kkmMQYYvK"
+                                class="w-14 h-14 rounded-full border-2 border-brand-purple object-cover" alt="Sarah">
                             <div>
                                 <h4 class="font-bold uppercase tracking-tight">Sarah L.</h4>
-                                <p class="text-xs font-bold text-green-700 dark:text-brand-green tracking-widest uppercase">Junior Engine Dev</p>
+                                <p
+                                    class="text-xs font-bold text-green-700 dark:text-brand-green tracking-widest uppercase">
+                                    Junior Engine Dev</p>
                             </div>
                         </div>
-                        <p class="text-lg italic text-gray-700 dark:text-gray-300 font-medium">"Endlich Shader verstanden! Kai erklärt nicht nur das 'Wie', sondern das 'Warum'. Das Debugging-Mindset hilft mir jeden Tag."</p>
+                        <p class="text-lg italic text-gray-700 dark:text-gray-300 font-medium">"Endlich Shader
+                            verstanden! Kai erklärt nicht nur das 'Wie', sondern das 'Warum'. Das Debugging-Mindset
+                            hilft mir jeden Tag."</p>
                     </div>
 
                     <!-- Testimonial 2 -->
-                    <div class="bg-gray-50 dark:bg-brand-card p-8 rounded-[2rem] shadow-lg border border-gray-200 dark:border-white/5 hover:-translate-y-1 transition-transform duration-300">
+                    <div
+                        class="bg-gray-50 dark:bg-brand-card p-8 rounded-[2rem] shadow-lg border border-gray-200 dark:border-white/5 hover:-translate-y-1 transition-transform duration-300">
                         <div class="flex items-center gap-4 mb-6">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4OTWrT6YrmkFpsAE2smYa89I3xtbIYThqlMXq12IyXsdHIoXvifimmddNoTJbNT-YHu1NKk7JirsLyThkNhVy9cVJQkzYipH3CTwlBduDNLFubEo-T8YyoFEjL1WB0RLUxl2x-LJLkT3-TC2ILMK4HPcw9vBsorZaMzPoRe5sw9uZkXb-RgavAs2iQ4Cn35oay9wkKD8fADMOAhVgtDFORraMFwIiT7UwQZYTVmYHaUIptb9Q8DY9ZJ5ne7voovs5bsHImOEfR74Y" 
-                                 class="w-14 h-14 rounded-full border-2 border-brand-purple object-cover" alt="Michael">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4OTWrT6YrmkFpsAE2smYa89I3xtbIYThqlMXq12IyXsdHIoXvifimmddNoTJbNT-YHu1NKk7JirsLyThkNhVy9cVJQkzYipH3CTwlBduDNLFubEo-T8YyoFEjL1WB0RLUxl2x-LJLkT3-TC2ILMK4HPcw9vBsorZaMzPoRe5sw9uZkXb-RgavAs2iQ4Cn35oay9wkKD8fADMOAhVgtDFORraMFwIiT7UwQZYTVmYHaUIptb9Q8DY9ZJ5ne7voovs5bsHImOEfR74Y"
+                                class="w-14 h-14 rounded-full border-2 border-brand-purple object-cover" alt="Michael">
                             <div>
                                 <h4 class="font-bold uppercase tracking-tight">Michael D.</h4>
-                                <p class="text-xs font-bold text-green-700 dark:text-brand-green tracking-widest uppercase">C++ Developer</p>
+                                <p
+                                    class="text-xs font-bold text-green-700 dark:text-brand-green tracking-widest uppercase">
+                                    C++ Developer</p>
                             </div>
                         </div>
-                        <p class="text-lg italic text-gray-700 dark:text-gray-300 font-medium">"Kein 'Copy-Paste' Tutorial. Wir haben eine echte kleine Engine gebaut. 100% Empfehlung für jeden, der hinter die Kulissen schauen will."</p>
+                        <p class="text-lg italic text-gray-700 dark:text-gray-300 font-medium">"Kein 'Copy-Paste'
+                            Tutorial. Wir haben eine echte kleine Engine gebaut. 100% Empfehlung für jeden, der hinter
+                            die Kulissen schauen will."</p>
                     </div>
                 </div>
             </div>
@@ -515,35 +536,44 @@
 
         <!-- CTA Section -->
         <section id="apply" class="reveal-on-scroll py-24 px-6 relative overflow-hidden">
-             <div class="absolute top-0 right-0 w-80 h-80 bg-brand-purple/10 rounded-full blur-[80px] -z-10" aria-hidden="true"></div>
-             <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-green/10 rounded-full blur-[80px] -z-10" aria-hidden="true"></div>
+            <div class="absolute top-0 right-0 w-80 h-80 bg-brand-purple/10 rounded-full blur-[80px] -z-10"
+                aria-hidden="true"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-green/10 rounded-full blur-[80px] -z-10"
+                aria-hidden="true"></div>
 
             <div class="max-w-xl mx-auto text-center">
                 <h2 class="text-4xl font-black italic uppercase tracking-tighter mb-2">
                     Bereit für das <span class="text-purple-700 dark:text-brand-purple">Rendering Level-Up?</span>
                 </h2>
-                <p class="text-green-700 dark:text-brand-green text-xs font-black tracking-[0.3em] uppercase mb-10">Limitierte Plätze Verfügbar</p>
+                <p class="text-green-700 dark:text-brand-green text-xs font-black tracking-[0.3em] uppercase mb-10">
+                    Limitierte Plätze Verfügbar</p>
 
-                <div class="bg-white dark:bg-brand-card p-10 rounded-[2rem] shadow-2xl border border-gray-200 dark:border-white/10 flex flex-col items-center gap-6 relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-purple to-brand-green rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition-opacity" aria-hidden="true"></div>
-                    
+                <div
+                    class="bg-white dark:bg-brand-card p-10 rounded-[2rem] shadow-2xl border border-gray-200 dark:border-white/10 flex flex-col items-center gap-6 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-purple to-brand-green rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition-opacity"
+                        aria-hidden="true"></div>
+
                     <div class="relative z-10 w-full flex flex-col items-center">
                         <div class="w-20 h-20 bg-brand-green/10 rounded-full flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-4xl text-green-700 dark:text-brand-green" aria-hidden="true">rocket_launch</span>
+                            <span class="material-symbols-outlined text-4xl text-green-700 dark:text-brand-green"
+                                aria-hidden="true">rocket_launch</span>
                         </div>
-                        
+
                         <h3 class="text-xl font-bold uppercase mb-2">Kurzberatung anfragen</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 max-w-sm">Wir klären in 10 Minuten, ob dein Level passt. Sende uns einfach eine Mail.</p>
-                        
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 max-w-sm">Wir klären in 10 Minuten, ob
+                            dein Level passt. Sende uns einfach eine Mail.</p>
+
                         <div class="flex flex-col sm:flex-row gap-4 w-full">
                             <a href="mailto:info@gamebootcamp.de" class="w-full">
-                                <button class="animate-pulse-purple w-full h-16 bg-brand-purple hover:brightness-110 text-gray-900 font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-3 neon-shadow-purple transition-all transform hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-purple/50">
+                                <button
+                                    class="animate-pulse-purple w-full h-16 bg-brand-purple hover:brightness-110 text-gray-900 font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-3 neon-shadow-purple transition-all transform hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-purple/50">
                                     <span class="material-symbols-outlined" aria-hidden="true">check</span>
                                     Platz Sichern
                                 </button>
                             </a>
-                             <a href="mailto:info@gamebootcamp.de" class="w-full">
-                                <button class="animate-pulse-green w-full h-16 bg-brand-green hover:brightness-110 text-gray-900 font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-3 neon-shadow-green transition-all transform hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/50">
+                            <a href="mailto:info@gamebootcamp.de" class="w-full">
+                                <button
+                                    class="animate-pulse-green w-full h-16 bg-brand-green hover:brightness-110 text-gray-900 font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-3 neon-shadow-green transition-all transform hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/50">
                                     <span class="material-symbols-outlined" aria-hidden="true">mail</span>
                                     Kontakt Aufnehmen
                                 </button>
@@ -553,13 +583,19 @@
                 </div>
 
                 <div class="mt-12 flex justify-center gap-8 text-gray-400">
-                    <a href="#" class="hover:text-purple-700 dark:hover:text-brand-purple cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded" aria-label="Share">
+                    <a href="#"
+                        class="hover:text-purple-700 dark:hover:text-brand-purple cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded"
+                        aria-label="Share">
                         <span class="material-symbols-outlined" aria-hidden="true">share</span>
                     </a>
-                    <a href="mailto:info@gamebootcamp.de" class="hover:text-purple-700 dark:hover:text-brand-purple cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded" aria-label="Email">
+                    <a href="mailto:info@gamebootcamp.de"
+                        class="hover:text-purple-700 dark:hover:text-brand-purple cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded"
+                        aria-label="Email">
                         <span class="material-symbols-outlined" aria-hidden="true">mail</span>
                     </a>
-                    <a href="#" class="hover:text-purple-700 dark:hover:text-brand-purple cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded" aria-label="Location">
+                    <a href="#"
+                        class="hover:text-purple-700 dark:hover:text-brand-purple cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded"
+                        aria-label="Location">
                         <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
                     </a>
                 </div>
@@ -582,12 +618,15 @@
 
     <!-- Sticky Bottom Banner -->
     <div class="fixed bottom-6 left-4 right-4 z-50 flex justify-center pointer-events-none">
-        <div class="pointer-events-auto bg-white/80 dark:bg-brand-card/90 backdrop-blur-xl border-2 border-brand-purple/20 rounded-2xl p-2 pl-5 pr-2 flex items-center justify-between shadow-2xl max-w-sm w-full">
+        <div
+            class="pointer-events-auto bg-white/80 dark:bg-brand-card/90 backdrop-blur-xl border-2 border-brand-purple/20 rounded-2xl p-2 pl-5 pr-2 flex items-center justify-between shadow-2xl max-w-sm w-full">
             <div>
-                <p class="text-[10px] font-black text-green-700 dark:text-brand-green uppercase tracking-wider">Graphics Sprint</p>
+                <p class="text-[10px] font-black text-green-700 dark:text-brand-green uppercase tracking-wider">Graphics
+                    Sprint</p>
                 <p class="text-xs font-bold leading-tight mt-0.5">Nächster Start: Okt '24</p>
             </div>
-            <a href="#apply" class="bg-brand-purple hover:bg-brand-purple/90 text-gray-900 text-xs font-black px-6 py-3 rounded-xl uppercase tracking-widest shadow-lg transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple">
+            <a href="#apply"
+                class="bg-brand-purple hover:bg-brand-purple/90 text-gray-900 text-xs font-black px-6 py-3 rounded-xl uppercase tracking-widest shadow-lg transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple">
                 Starten
             </a>
         </div>
@@ -621,7 +660,7 @@
         const playerRankEl = document.getElementById('player-rank');
         const toastEl = document.getElementById('achievement-toast');
         const toastText = document.getElementById('achievement-text');
-        
+
         // Ranks based on progress milestones
         const ranks = [
             { threshold: 0, name: "Novice", id: 1 },
@@ -633,18 +672,18 @@
         ];
 
         let currentRankIndex = 0;
-        
+
         function updateProgress() {
             window.requestAnimationFrame(() => {
                 const scrollTop = window.scrollY || document.documentElement.scrollTop;
                 const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                
+
                 let percent = 0;
                 if (docHeight > 0) {
                     percent = (scrollTop / docHeight) * 100;
                 }
                 percent = Math.max(0, Math.min(100, percent));
-                
+
                 // Update XP Bar
                 if (xpBarFill) {
                     xpBarFill.style.width = percent + '%';
@@ -669,7 +708,7 @@
                 if (newRankIndex > currentRankIndex) {
                     currentRankIndex = newRankIndex;
                     const rankData = ranks[currentRankIndex];
-                    
+
                     // Update Rank Text
                     if (playerRankEl) {
                         playerRankEl.textContent = rankData.name;
@@ -680,10 +719,10 @@
                     // Trigger Toast
                     if (toastEl && toastText) {
                         toastText.textContent = `New Rank: ${rankData.name}`;
-                        
+
                         // Show toast
                         toastEl.classList.remove('translate-y-20', 'opacity-0');
-                        
+
                         // Hide after 3 seconds
                         setTimeout(() => {
                             toastEl.classList.add('translate-y-20', 'opacity-0');
@@ -726,7 +765,7 @@
             requestAnimationFrame(() => {
                 const x = e.clientX / window.innerWidth;
                 const y = e.clientY / window.innerHeight;
-                
+
                 const blobPurple = document.getElementById('blob-purple');
                 const blobGreen = document.getElementById('blob-green');
                 const heroImg = document.getElementById('hero-img');
@@ -741,10 +780,10 @@
                     blobGreen.style.transform = `translate(${x * 40}px, ${y * 40}px)`;
                 }
                 if (heroImg) {
-                     // Move opposite to mouse for depth
-                     // Note: The parent has scale(1.1) to scale(1.2), so we have ~10% buffer.
-                     // On 500px width, that's 50px. We can move +/- 20px safely.
-                     heroImg.style.transform = `translate(${(x - 0.5) * -25}px, ${(y - 0.5) * -25}px)`;
+                    // Move opposite to mouse for depth
+                    // Note: The parent has scale(1.1) to scale(1.2), so we have ~10% buffer.
+                    // On 500px width, that's 50px. We can move +/- 20px safely.
+                    heroImg.style.transform = `translate(${(x - 0.5) * -25}px, ${(y - 0.5) * -25}px)`;
                 }
                 if (grid) {
                     // Grid moves very subtly opposite to mouse to create depth
@@ -754,4 +793,5 @@
         });
     </script>
 </body>
+
 </html>

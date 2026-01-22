@@ -1,0 +1,92 @@
+/* Custom Styles for things Tailwind can't easily do natively */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Account for sticky header (h-20 = 5rem) */
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.glitch-text {
+    text-shadow: 3px 0px 0px rgba(50, 215, 75, 0.5), -3px 0px 0px rgba(191, 64, 255, 0.5);
+}
+
+.neon-shadow-purple {
+    box-shadow: 0 0 20px rgba(191, 64, 255, 0.4);
+}
+
+.neon-shadow-green {
+    box-shadow: 0 0 20px rgba(50, 215, 75, 0.4);
+}
+
+/* Hide scrollbar for cleaner look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #bf40ff;
+    border-radius: 4px;
+}
+
+/* Scroll Reveal Animation Classes */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Focus visible styles for keyboard navigation */
+:focus-visible {
+    outline: 2px solid #bf40ff;
+    outline-offset: 2px;
+}
+
+/* Pulse Animations */
+@keyframes pulse-purple {
+    0% { box-shadow: 0 0 0 0 rgba(191, 64, 255, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(191, 64, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(191, 64, 255, 0); }
+}
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(50, 215, 75, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(50, 215, 75, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(50, 215, 75, 0); }
+}
+
+.animate-pulse-purple {
+    animation: pulse-purple 2s infinite;
+}
+.animate-pulse-green {
+    animation: pulse-green 2s infinite;
+}
+
+/* Hero Image Breathing Animation */
+@keyframes hero-breathe {
+    0%, 100% { transform: scale(1.1); }
+    50% { transform: scale(1.2); }
+}
+.animate-hero-breathe {
+    animation: hero-breathe 10s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Level Up Animation */
+@keyframes level-up-pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); color: #32D74B; }
+    100% { transform: scale(1); }
+}
+.animate-level-up {
+    animation: level-up-pop 0.5s ease-out;
+}
