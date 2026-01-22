@@ -171,7 +171,7 @@ export class StaggeredRevealController {
     applyStagger(container: HTMLElement): void {
         const items = container.querySelectorAll('.reveal-item');
         items.forEach((item, index) => {
-            (item as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
+            (item as HTMLElement).style.transitionDelay = `${index * 0.15}s`;
         });
     }
 

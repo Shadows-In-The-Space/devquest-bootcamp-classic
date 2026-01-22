@@ -22,8 +22,8 @@ describe('StaggeredRevealController', () => {
         controller.applyStagger(container);
 
         expect(items[0].style.transitionDelay).toBe('0s');
-        expect(items[1].style.transitionDelay).toBe('0.1s');
-        expect(items[2].style.transitionDelay).toBe('0.2s');
+        expect(items[1].style.transitionDelay).toBe('0.15s');
+        expect(items[2].style.transitionDelay).toBe('0.3s');
     });
 
     it('should add reveal-active class when revealed', () => {
