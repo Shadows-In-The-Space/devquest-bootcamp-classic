@@ -34,4 +34,22 @@ describe('StaggeredRevealController', () => {
             expect(item.classList.contains('reveal-active')).toBe(true);
         });
     });
+
+    it('should initialize and observe containers', () => {
+        const observeSpy = vi.fn();
+        
+        class MockIntersectionObserver {
+            observe = observeSpy;
+            unobserve = vi.fn();
+            disconnect = vi.fn();
+        }
+
+        // @ts-ignore
+        window.IntersectionObserver = MockIntersectionObserver;
+
+        const controller = new StaggeredRevealController();
+        controller.init();
+
+        expect(observeSpy).toHaveBeenCalledWith(container);
+    });
 });

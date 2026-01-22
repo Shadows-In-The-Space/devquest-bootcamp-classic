@@ -1,13 +1,17 @@
 import './styles/main.css';
 import { ThemeManager } from './logic/theme';
 import { GamificationSystem } from './logic/gamification';
-import { AnimationSystem, TextGlitcher } from './logic/animations';
+import { AnimationSystem, TextGlitcher, StaggeredRevealController } from './logic/animations';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Logic Modules
     new ThemeManager();
     new GamificationSystem();
     new AnimationSystem();
+    
+    // Initialize Staggered Reveal
+    const revealController = new StaggeredRevealController();
+    revealController.init();
 
     // Initialize Hero Glitch
     const heroTitle = document.getElementById('hero-title');
