@@ -16,13 +16,13 @@ Extract custom CSS into dedicated files and verify the build.
 ## Phase 2: Logic Extraction (TypeScript)
 Move embedded JavaScript logic to modular TypeScript files.
 
-- [ ] **Task: Extract Dark Mode Logic**
+- [x] **Task: Extract Dark Mode Logic**
     - [ ] **Write Tests:** Create `tests/theme.test.ts` to verify dark mode state management.
     - [ ] **Implement:** Move dark mode logic to `src/logic/theme.ts`.
-- [ ] **Task: Extract XP & Gamification System**
+- [x] **Task: Extract XP & Gamification System**
     - [ ] **Write Tests:** Create `tests/gamification.test.ts` to verify rank and level calculations.
     - [ ] **Implement:** Move XP logic to `src/logic/gamification.ts`.
-- [ ] **Task: Extract Animations (Scroll Reveal & Parallax)**
+- [x] **Task: Extract Animations (Scroll Reveal & Parallax)**
     - [ ] **Implement:** Move scroll and mouse tracking logic to `src/logic/animations.ts`.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Logic Extraction (TypeScript)' (Protocol in workflow.md)**
 
