@@ -5,11 +5,11 @@
 - [x] Task: Define the `@keyframes glitch-entry` animation [0d7e844]
 - [x] Task: Conductor - User Manual Verification 'CSS Architecture' (Protocol in workflow.md) [fe110ea]
 
-### Phase 2: Core Logic (TDD)
+### Phase 2: Core Logic (TDD) [checkpoint: 870e27e]
 - [x] Task: Write failing tests for `StaggeredRevealController` (delay calculations) [8808f9f]
 - [x] Task: Implement `StaggeredRevealController` in `src/logic/animations.ts` [c20c82c]
 - [x] Task: Integrate `IntersectionObserver` for `[data-reveal-container]` [c20c82c]
-- [ ] Task: Conductor - User Manual Verification 'Animation Logic' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Animation Logic' (Protocol in workflow.md) [870e27e]
 
 ### Phase 3: HTML Integration
 - [ ] Task: Add `data-reveal-container` and `.reveal-item` classes to all relevant sections in `index.html`
