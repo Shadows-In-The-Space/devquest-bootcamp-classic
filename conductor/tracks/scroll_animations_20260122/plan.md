@@ -11,10 +11,10 @@
 - [x] Task: Integrate `IntersectionObserver` for `[data-reveal-container]` [c20c82c]
 - [x] Task: Conductor - User Manual Verification 'Animation Logic' (Protocol in workflow.md) [870e27e]
 
-### Phase 3: HTML Integration
+### Phase 3: HTML Integration [checkpoint: a9557c5]
 - [x] Task: Add `data-reveal-container` and `.reveal-item` classes to all relevant sections in `index.html` [1177569]
 - [x] Task: Apply alternating sweep classes to grid items [7bcae43]
-- [ ] Task: Conductor - User Manual Verification 'HTML Integration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'HTML Integration' (Protocol in workflow.md) [a9557c5]
 
 ### Phase 4: Polish & Accessibility
 - [ ] Task: Add `prefers-reduced-motion` overrides
