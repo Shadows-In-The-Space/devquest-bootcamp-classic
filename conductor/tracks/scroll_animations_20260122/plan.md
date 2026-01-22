@@ -16,7 +16,7 @@
 - [x] Task: Apply alternating sweep classes to grid items [7bcae43]
 - [x] Task: Conductor - User Manual Verification 'HTML Integration' (Protocol in workflow.md) [a9557c5]
 
-### Phase 4: Polish & Accessibility
+### Phase 4: Polish & Accessibility [checkpoint: a6bd843]
 - [x] Task: Add `prefers-reduced-motion` overrides [4e4383e]
 - [x] Task: Fine-tune staggering duration and easing curves [4e8b1da]
-- [ ] Task: Conductor - User Manual Verification 'Quality & Accessibility' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Quality & Accessibility' (Protocol in workflow.md) [a6bd843]
