@@ -12,8 +12,8 @@
 - [x] Task: Conductor - User Manual Verification 'Animation Logic' (Protocol in workflow.md) [870e27e]
 
 ### Phase 3: HTML Integration
-- [ ] Task: Add `data-reveal-container` and `.reveal-item` classes to all relevant sections in `index.html`
-- [ ] Task: Apply alternating sweep classes to grid items
+- [x] Task: Add `data-reveal-container` and `.reveal-item` classes to all relevant sections in `index.html` [1177569]
+- [x] Task: Apply alternating sweep classes to grid items [7bcae43]
 - [ ] Task: Conductor - User Manual Verification 'HTML Integration' (Protocol in workflow.md)
 
 ### Phase 4: Polish & Accessibility
