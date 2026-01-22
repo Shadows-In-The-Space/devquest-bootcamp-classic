@@ -17,6 +17,6 @@
 - [x] Task: Conductor - User Manual Verification 'HTML Integration' (Protocol in workflow.md) [a9557c5]
 
 ### Phase 4: Polish & Accessibility
-- [ ] Task: Add `prefers-reduced-motion` overrides
-- [ ] Task: Fine-tune staggering duration and easing curves
+- [x] Task: Add `prefers-reduced-motion` overrides [4e4383e]
+- [~] Task: Fine-tune staggering duration and easing curves
 - [ ] Task: Conductor - User Manual Verification 'Quality & Accessibility' (Protocol in workflow.md)
