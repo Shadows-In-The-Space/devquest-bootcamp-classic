@@ -59,4 +59,18 @@ describe('ThemeManager', () => {
         expect(document.documentElement.classList.contains('dark')).toBe(false);
         expect(localStorage.getItem('theme')).toBe('light');
     });
+
+    it('should toggle theme when the toggle button is clicked', () => {
+        // Setup DOM
+        document.body.innerHTML = '<button id="theme-toggle"></button>';
+        localStorage.setItem('theme', 'light');
+
+        themeManager = new ThemeManager();
+
+        const btn = document.getElementById('theme-toggle');
+        btn?.click();
+
+        expect(document.documentElement.classList.contains('dark')).toBe(true);
+        expect(localStorage.getItem('theme')).toBe('dark');
+    });
 });
