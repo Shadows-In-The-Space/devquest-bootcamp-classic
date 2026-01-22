@@ -1,8 +1,8 @@
 # Implementation Plan - Sequential Section Scroll Animations
 
 ### Phase 1: CSS Architecture
-- [~] Task: Implement `.reveal-item`, `.reveal-active` and motion utilities in `src/styles/main.css`
-- [ ] Task: Define the `@keyframes glitch-entry` animation
+- [x] Task: Implement `.reveal-item`, `.reveal-active` and motion utilities in `src/styles/main.css` [0d7e844]
+- [x] Task: Define the `@keyframes glitch-entry` animation [0d7e844]
 - [ ] Task: Conductor - User Manual Verification 'CSS Architecture' (Protocol in workflow.md)
 
 ### Phase 2: Core Logic (TDD)
