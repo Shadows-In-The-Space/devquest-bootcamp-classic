@@ -19,5 +19,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Sequential section scroll animations with staggered reveal and glitch effects**
+- [x] **Track: Sequential section scroll animations with staggered reveal and glitch effects**
 *Link: [./tracks/scroll_animations_20260122/](./tracks/scroll_animations_20260122/)*
