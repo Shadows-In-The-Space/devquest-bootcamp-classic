@@ -17,7 +17,3 @@ This file tracks all major tracks for the project. Each track has its own detail
 - [x] **Track: Hero section interactive glitch reveal animation on load**
 *Link: [./tracks/hero_glitch_20260122/](./tracks/hero_glitch_20260122/)*
 
----
-
-- [x] **Track: Sequential section scroll animations with staggered reveal and glitch effects**
-*Link: [./tracks/scroll_animations_20260122/](./tracks/scroll_animations_20260122/)*
