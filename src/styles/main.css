@@ -532,6 +532,43 @@
 }
 
 /* ========================================
+   3D CARD EFFECTS (ported from Cyberpunk)
+   ======================================== */
+
+.card-3d {
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card-3d:hover {
+    transform: translateY(-8px) rotateX(3deg);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(124, 58, 237, 0.1);
+    border-color: var(--color-brand-primary);
+}
+
+.dark .card-3d:hover {
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(124, 58, 237, 0.2);
+}
+
+/* Curriculum Timeline Items */
+.group:hover .group-hover\:text-brand-primary {
+    transition: color 0.3s ease;
+}
+
+.group {
+    transition: transform 0.3s ease;
+}
+
+.group:hover {
+    transform: translateX(6px);
+}
+
+/* ========================================
    LIGHT MODE OVERRIDES
    ======================================== */
 
