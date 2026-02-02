@@ -1,0 +1,5 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" fill="#000"/>
+  <!-- Space Invader Shape in Green -->
+  <path d="M8 8h4v4H8zM20 8h4v4h-4zM6 12h20v4H6zM6 16h6v4H6zM20 16h6v4h-6zM6 20h4v4H6zM22 20h4v4h-4z" fill="#39ff14"/>
+</svg>

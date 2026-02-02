@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-@variant dark (.dark &);
+
 
 @theme {
-  --font-display: Syncopate, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
   --font-mono: "Space Mono", monospace;
 
   --color-brand-green: #32D74B;
@@ -20,6 +20,24 @@
 
   --background-image-grid-pattern: linear-gradient(to right, rgba(124, 58, 237, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
   --background-image-bento-gradient: radial-gradient(circle at top right, rgba(124, 58, 237, 0.1), transparent), radial-gradient(circle at bottom left, rgba(50, 215, 75, 0.05), transparent);
+}
+
+@utility custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brand-primary) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-brand-primary);
+    border-radius: 20px;
+  }
 }
 
 @layer base {
@@ -51,6 +69,10 @@
 
   .neon-shadow-green {
     box-shadow: 0 0 20px rgba(50, 215, 75, 0.4);
+  }
+
+  .neon-shadow-yellow {
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
   }
 
   .bento-card {
@@ -359,23 +381,28 @@
     transform: translateX(-10px) scale(0.95);
     text-shadow: 2px 0 red, -2px 0 blue;
   }
+
   20% {
     opacity: 1;
     transform: translateX(10px);
     text-shadow: -2px 0 red, 2px 0 blue;
   }
+
   40% {
     transform: translateX(-5px);
     text-shadow: 2px 0 red, -2px 0 blue;
   }
+
   60% {
     transform: translateX(5px);
     text-shadow: -2px 0 red, 2px 0 blue;
   }
+
   80% {
     transform: translateX(0) scale(1.02);
     text-shadow: none;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -394,9 +421,9 @@
     animation: none !important;
   }
 
-  .glitch-text, .glitching {
+  .glitch-text,
+  .glitching {
     animation: none !important;
     text-shadow: none !important;
   }
 }
-

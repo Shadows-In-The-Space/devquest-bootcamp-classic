@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevQuest | Kai Niklas - Der Trainer</title>
+
+    <!-- Google Fonts & Tailwind handled via src/styles/main.css & Vite -->
+    <!-- Fonts & Icons (Loaded Locally via src/main.ts) -->
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+
+<body class="bg-brand-light text-gray-900 dark:bg-brand-dark dark:text-white transition-colors duration-300">
+
+    <!-- Navigation -->
+    <header
+        class="sticky top-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-brand-dark/70 border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer focus:outline-none rounded-lg p-1">
+                <div class="bg-brand-primary/10 p-2 rounded-lg group-hover:bg-brand-primary/20 transition-colors">
+                    <span class="material-symbols-outlined text-brand-primary" aria-hidden="true">terminal</span>
+                </div>
+                <span
+                    class="text-xl font-display font-bold tracking-widest uppercase text-gray-900 dark:text-white group-hover:text-brand-primary transition-colors duration-300">DevQuest</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                aria-label="Main Navigation">
+                <a href="index.html"
+                    class="text-xs font-display font-bold uppercase tracking-[0.15em] text-gray-600 dark:text-gray-300 hover:text-brand-primary transition-colors duration-300 focus:outline-none rounded p-1">Home</a>
+                <a href="#"
+                    class="text-xs font-display font-bold uppercase tracking-[0.15em] text-brand-primary transition-colors duration-300 focus:outline-none rounded p-1">Trainer</a>
+                <a href="index.html#curriculum"
+                    class="text-xs font-display font-bold uppercase tracking-[0.15em] text-gray-600 dark:text-gray-300 hover:text-brand-primary transition-colors duration-300 focus:outline-none rounded p-1">Curriculum</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors focus:outline-none"
+                    aria-label="Toggle Dark Mode">
+                    <span class="material-symbols-outlined dark:hidden" aria-hidden="true">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block text-brand-green"
+                        aria-hidden="true">light_mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="relative z-10 overflow-x-hidden">
+
+        <!-- Hero: Kai Niklas -->
+        <section class="reveal-on-scroll relative pt-12 pb-20 lg:pt-24 lg:pb-32 px-6 overflow-hidden">
+            <!-- Blobs -->
+            <div
+                class="absolute top-20 right-0 w-96 h-96 bg-brand-primary/20 rounded-full blur-[100px] -z-10 transition-transform duration-100 ease-out">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-96 h-96 bg-brand-green/20 rounded-full blur-[100px] -z-10 transition-transform duration-100 ease-out">
+            </div>
+
+            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <!-- Image -->
+                <div class="relative w-full lg:w-1/2 aspect-4/5 lg:aspect-square">
+                    <div
+                        class="absolute inset-0 rounded-4xl border-2 border-white/50 dark:border-white/10 overflow-hidden shadow-2xl dark:shadow-brand-primary/20">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuALhyVIdNHzn-QYTEfn277peMum7rbncdGZf2w1ZDc18o_rCkYRtvujCpiV6l-YdwfN3_-szBSRT_zUBwasfybi4w7EZ6eq8mIY7gIKJUtuB5rsK9WCfJzMN-je8FOF4-KeYppms3ZE9yQnhb8o3UWE0yLTWLdfvwweLOqeFIM15CgB5Ixv5LKxukkkaWThuGiM8wu8KHK-6ZKRDYzSxjQBHuBwluz4IbsCgYPWcT6pSqzir9v4oDeQc_fivxtTBsULv3hvFuuo8Z9k"
+                            alt="Kai Niklas Portrait" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+                    </div>
+                </div>
+
+                <!-- Bio -->
+                <div class="w-full lg:w-1/2 space-y-6">
+                    <h1
+                        class="text-4xl lg:text-6xl font-black italic uppercase leading-none tracking-tighter font-display">
+                        Kai <span class="text-brand-primary">Niklas</span>
+                    </h1>
+                    <h2 class="text-xl font-bold font-mono text-brand-green tracking-widest uppercase">
+                        Graphics Engineer & Trainer
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 font-mono leading-relaxed">
+                        Managing Director @ <a href="https://decode-it.de" target="_blank"
+                            class="underline decoration-brand-primary underline-offset-4 hover:text-brand-primary transition-colors">deCode
+                            GmbH</a>. Weltweit gebuchter Dozent für High-Performance Graphics.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 font-mono">
+                        Kai lebt und atmet GPU-Zyklen. Wenn er nicht gerade Entwicklerteams in C++, OpenGL oder Vulkan
+                        coacht, optimiert er Render-Pipelines für Industrie und Games.
+                        Bekannt für seine "No-Bullshit"-Mentalität: Code muss laufen. Schnell.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Blizzard Story -->
+        <section data-reveal-container class="reveal-on-scroll py-20 bg-brand-dark text-white relative overflow-hidden">
+            <div
+                class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10">
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="material-symbols-outlined text-5xl text-brand-cta">warning</span>
+                    <h2 class="text-3xl md:text-5xl font-black italic uppercase tracking-tighter font-display">
+                        The Warcraft <span class="text-brand-cta">Incident</span>
+                    </h2>
+                </div>
+
+                <div
+                    class="bg-black/30 backdrop-blur-sm p-8 rounded-3xl border border-white/10 font-mono space-y-6 text-lg leading-relaxed shadow-2xl">
+                    <p>
+                        <span class="text-brand-cta font-bold">Es war eine dieser Nächte.</span>
+                        Das Rendering-Team bei Blizzard stand vor einer Wand. Die neuen Character-Models für die
+                        kommende Expansion
+                        fraßen die Frame-Rate auf wie ein hungriger Orc. Die Vertices waren zu hoch, die Draw-Calls
+                        explodierten.
+                    </p>
+                    <p>
+                        Kai wurde eingeflogen (virtuell, aber mit der Dringlichkeit eines Hotfixes). Das Problem?
+                        Ineffizientes Buffer-Management in der Legacy-Pipeline.
+                    </p>
+                    <p>
+                        "Ihr schickt die Daten einzeln rüber", sagte er nach einem Blick in den Profiler.
+                        <span class="italic text-gray-400">"Die GPU wartet 90% der Zeit auf den Bus."</span>
+                    </p>
+                    <p>
+                        In einer 48-Stunden-Session refactorierte er den Core-Loop auf <strong>Instanced
+                            Rendering</strong> um.
+                        Das Ergebnis? <strong class="text-brand-green">300% mehr FPS</strong> in Crowded Areas.
+                        Die Warcraft-Helden sahen nicht nur besser aus – sie liefen endlich flüssig.
+                    </p>
+                    <div class="pt-4 border-t border-white/10 text-sm text-gray-400 italic">
+                        * Basierend auf wahren Begebenheiten aus dem Leben eines Graphics-Consultants. Details können
+                        variieren, aber die FPS wurden gerettet.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Grid -->
+        <section data-reveal-container class="reveal-on-scroll py-20 bg-white dark:bg-white/5">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2
+                    class="reveal-item text-4xl font-black italic uppercase tracking-tighter mb-12 text-center font-display">
+                    Tech <span class="text-brand-primary">Arsenal</span>
+                </h2>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="reveal-item glass-card p-8 hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold uppercase mb-4 font-display text-gray-900 dark:text-white">OpenGL
+                            & Vulkan</h3>
+                        <p class="font-mono text-gray-600 dark:text-gray-400">
+                            Von Legacy OpenGL 1.1 bis Modern Vulkan Raytracing. Kai bringt bei, was die Dokumentation
+                            verschweigt.
+                            Betreiber von <a href="https://opengl-trainer.de"
+                                class="text-brand-primary hover:underline">opengl-trainer.de</a>.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="reveal-item glass-card p-8 hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold uppercase mb-4 font-display text-gray-900 dark:text-white">C++
+                            Performance</h3>
+                        <p class="font-mono text-gray-600 dark:text-gray-400">
+                            Memory-Management, Pointer-Arithmetik und Cache-Locality. Wenn du Bytes sparen musst, bist
+                            du hier richtig.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="reveal-item glass-card p-8 hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold uppercase mb-4 font-display text-gray-900 dark:text-white">
+                            Dinslaken Code</h3>
+                        <p class="font-mono text-gray-600 dark:text-gray-400">
+                            Firmensitz in Dinslaken. Von hier aus operiert die deCode GmbH und unterstützt Firmen
+                            weltweit bei Software-Architektur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Back -->
+        <section class="py-20 px-6 text-center">
+            <h2 class="text-3xl font-black italic uppercase mb-8 font-display">Lerne vom Profi</h2>
+            <a href="index.html#apply" class="inline-block btn-glitch">
+                Zum Bootcamp
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="py-12 bg-white dark:bg-brand-card border-t border-gray-200 dark:border-white/5 text-center pb-32 font-mono">
+        <div class="flex items-center justify-center gap-2 mb-6 opacity-50">
+            <span class="material-symbols-outlined" aria-hidden="true">terminal</span>
+            <span class="text-xs font-bold uppercase tracking-widest font-display">DevQuest Graphics Bootcamp</span>
+        </div>
+        <p class="text-[10px] text-gray-400 uppercase tracking-widest leading-loose">
+            © 2026 DevQuest. Alle Rechte Vorbehalten. <br>
+            Dinslaken
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
