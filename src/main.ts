@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     scrollReveal.init();
 
     // Tilt-Effekt fuer Bento-Cards initialisieren
-    const tiltEffect = new TiltEffect('.bento-card');
+    const tiltEffect = new TiltEffect('.card-3d');
     tiltEffect.init();
 
     // Mouse-Parallax fuer Blob-Elemente initialisieren
