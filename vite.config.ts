@@ -8,6 +8,14 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        // Proxy fuer PHP-Backend im Dev-Modus
+        proxy: {
+          '/server': {
+            target: 'http://localhost:8080',
+            changeOrigin: true,
+            rewrite: (path: string) => path.replace(/^\/server/, ''),
+          }
+        }
       },
       plugins: [],
       define: {

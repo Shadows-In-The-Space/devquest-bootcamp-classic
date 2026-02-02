@@ -9,16 +9,12 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || '/server';
 export class ScoreManager {
     static async submitScore(email: string, score: number): Promise<boolean> {
         try {
-            const response = await fetch(`${API_BASE_URL}/api.php`, {
+            const response = await fetch(`${API_BASE_URL}/api/scores`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    action: 'submit_score',
-                    email,
-                    score
-                }),
+                body: JSON.stringify({ email, score }),
             });
 
             if (!response.ok) {
@@ -38,7 +34,7 @@ export class ScoreManager {
 
     static async getLeaderboard(limit = 10): Promise<ScoreEntry[]> {
         try {
-            const response = await fetch(`${API_BASE_URL}/api.php?action=leaderboard&limit=${limit}`);
+            const response = await fetch(`${API_BASE_URL}/api/leaderboard?limit=${limit}`);
 
             if (!response.ok) {
                 const error = await response.json();

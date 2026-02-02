@@ -13,12 +13,190 @@ import { AnimationSystem, TextGlitcher, StaggeredRevealController } from './logi
 import { GameLauncher } from './game/Launcher';
 import { ScoreManager } from './game/ScoreManager';
 
+// ========================================
+// PARTICLE SYSTEM - Schwebende Partikel im Hintergrund
+// ========================================
+
+class ParticleSystem {
+    private container: HTMLElement | null;
+    private particleCount: number;
+    private colors: string[];
+
+    constructor(containerId: string, particleCount: number = 50) {
+        this.container = document.getElementById(containerId);
+        this.particleCount = particleCount;
+        // Farben angepasst an das Old-Design Farbschema
+        this.colors = ['#32D74B', '#7C3AED', '#A78BFA', '#F43F5E'];
+    }
+
+    init(): void {
+        if (!this.container) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        for (let i = 0; i < this.particleCount; i++) {
+            this.createParticle();
+        }
+    }
+
+    private createParticle(): void {
+        if (!this.container) return;
+
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+
+        // Zufaellige Eigenschaften fuer jeden Partikel
+        const size = Math.random() * 3 + 1;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 10;
+        const duration = Math.random() * 10 + 10;
+        const color = this.colors[Math.floor(Math.random() * this.colors.length)];
+
+        particle.style.cssText = `
+            width: ${size}px;
+            height: ${size}px;
+            left: ${left}%;
+            background: ${color};
+            box-shadow: 0 0 ${size * 2}px ${color};
+            animation-delay: ${delay}s;
+            animation-duration: ${duration}s;
+        `;
+
+        this.container.appendChild(particle);
+    }
+}
+
+// ========================================
+// MOUSE PARALLAX EFFEKT - Mausabhaengiger Parallax
+// ========================================
+
+class MouseParallax {
+    private elements: NodeListOf<HTMLElement>;
+
+    constructor(selector: string) {
+        this.elements = document.querySelectorAll(selector);
+    }
+
+    init(): void {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        document.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const moveX = (clientX - centerX) / centerX;
+            const moveY = (clientY - centerY) / centerY;
+
+            this.elements.forEach((el, index) => {
+                const depth = (index + 1) * 10;
+                const x = moveX * depth;
+                const y = moveY * depth;
+                el.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    }
+}
+
+// ========================================
+// SCROLL REVEAL - Elemente beim Scrollen einblenden
+// ========================================
+
+class ScrollReveal {
+    private elements: NodeListOf<HTMLElement>;
+
+    constructor(selector: string) {
+        this.elements = document.querySelectorAll(selector);
+    }
+
+    init(): void {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        this.elements.forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+        });
+    }
+}
+
+// ========================================
+// TILT EFFEKT - 3D-Kippeffekt fuer Karten
+// ========================================
+
+class TiltEffect {
+    private cards: NodeListOf<HTMLElement>;
+
+    constructor(selector: string) {
+        this.cards = document.querySelectorAll(selector);
+    }
+
+    init(): void {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        this.cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => this.handleMouseMove(e, card));
+            card.addEventListener('mouseleave', () => this.handleMouseLeave(card));
+        });
+    }
+
+    private handleMouseMove(e: MouseEvent, card: HTMLElement): void {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+    }
+
+    private handleMouseLeave(card: HTMLElement): void {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    }
+}
+
+// ========================================
+// HAUPT-INITIALISIERUNG
+// ========================================
+
 document.addEventListener('DOMContentLoaded', async () => {
-    // Initialize Logic Modules
+    // Logik-Module initialisieren
     new ThemeManager();
     new GamificationSystem();
     new AnimationSystem();
     new GameLauncher();
+
+    // Partikel-System initialisieren
+    const particleSystem = new ParticleSystem('particles', 50);
+    particleSystem.init();
+
+    // Scroll Reveal fuer Bento-Cards und Sections initialisieren
+    const scrollReveal = new ScrollReveal('.bento-card');
+    scrollReveal.init();
+
+    // Tilt-Effekt fuer Bento-Cards initialisieren
+    const tiltEffect = new TiltEffect('.bento-card');
+    tiltEffect.init();
+
+    // Mouse-Parallax fuer Blob-Elemente initialisieren
+    const mouseParallax = new MouseParallax('.parallax');
+    mouseParallax.init();
 
     // Initialize Staggered Reveal
     const revealController = new StaggeredRevealController();

@@ -409,6 +409,89 @@
   }
 }
 
+/* ========================================
+   PARTICLE SYSTEM STYLES
+   Schwebende Partikel im Hintergrund
+   ======================================== */
+
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float-up 15s linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Partikel schweben nach oben */
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   SCROLL REVEAL STYLES
+   Elemente werden beim Scrollen sichtbar
+   ======================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   3D TILT EFFEKT STYLES
+   Karten-Kippeffekt bei Mausbewegung
+   ======================================== */
+
+.bento-card {
+  transform-style: preserve-3d;
+}
+
+/* ========================================
+   PARALLAX CONTAINER STYLES
+   Mausabhaengiger Parallax-Effekt
+   ======================================== */
+
+.parallax {
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
 /* Accessibility: Support for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .reveal-item {
@@ -425,5 +508,25 @@
   .glitching {
     animation: none !important;
     text-shadow: none !important;
+  }
+
+  /* Partikel und Effekte bei reduzierter Bewegung deaktivieren */
+  .particle {
+    animation: none !important;
+    display: none;
+  }
+
+  .particles-container {
+    display: none;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .parallax {
+    transition: none !important;
   }
 }

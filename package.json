@@ -26,7 +26,6 @@
   "dependencies": {
     "@fontsource/space-grotesk": "^5.2.10",
     "@fontsource/space-mono": "^5.2.9",
-    "@supabase/supabase-js": "^2.93.1",
     "@types/three": "^0.182.0",
     "material-symbols": "^0.40.2",
     "three": "^0.182.0"
