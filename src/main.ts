@@ -12,6 +12,7 @@ import { GamificationSystem } from './logic/gamification';
 import { AnimationSystem, TextGlitcher, StaggeredRevealController } from './logic/animations';
 import { GameLauncher } from './game/Launcher';
 import { ScoreManager } from './game/ScoreManager';
+import { MobileMenu } from './logic/mobile-menu';
 
 // ========================================
 // PARTICLE SYSTEM - Schwebende Partikel im Hintergrund
@@ -181,6 +182,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     new GamificationSystem();
     new AnimationSystem();
     new GameLauncher();
+    new MobileMenu();
 
     // Partikel-System initialisieren
     const particleSystem = new ParticleSystem('particles', 50);
