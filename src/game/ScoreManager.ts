@@ -17,17 +17,12 @@ export class ScoreManager {
                 body: JSON.stringify({ email, score }),
             });
 
-            if (!response.ok) {
-                const error = await response.json();
-                console.error('Error submitting score:', error);
-                return false;
-            }
+            if (!response.ok) return false;
 
             const result = await response.json();
             return result.success === true;
 
-        } catch (error) {
-            console.error('Error submitting score:', error);
+        } catch {
             return false;
         }
     }
@@ -36,17 +31,12 @@ export class ScoreManager {
         try {
             const response = await fetch(`${API_BASE_URL}/api/leaderboard?limit=${limit}`);
 
-            if (!response.ok) {
-                const error = await response.json();
-                console.error('Error fetching leaderboard:', error);
-                return [];
-            }
+            if (!response.ok) return [];
 
             const data = await response.json();
             return data;
 
-        } catch (error) {
-            console.error('Error fetching leaderboard:', error);
+        } catch {
             return [];
         }
     }
