@@ -17,6 +17,14 @@ export default defineConfig(({ mode }) => {
           }
         }
       },
+      build: {
+        rollupOptions: {
+          input: {
+            main: path.resolve(__dirname, 'index.html'),
+            trainer: path.resolve(__dirname, 'trainer.html'),
+          }
+        }
+      },
       plugins: [],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),

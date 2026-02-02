@@ -530,3 +530,69 @@
     transition: none !important;
   }
 }
+
+/* ========================================
+   LIGHT MODE OVERRIDES
+   ======================================== */
+
+/* Button Glitch - Light Mode: Dunkler Text statt Weiss */
+:root:not(.dark) .btn-glitch,
+:root:not(.dark) .btn-glitch::after {
+    color: #1a1a2e;
+    border-color: var(--color-brand-primary);
+    background-color: transparent;
+    text-shadow: none;
+}
+
+:root:not(.dark) .btn-glitch:hover,
+:root:not(.dark) .btn-glitch:hover::after {
+    color: white;
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    text-shadow: -3px -3px 0px rgba(124, 58, 237, 0.5), 3px 3px 0px rgba(50, 215, 75, 0.5);
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+}
+
+/* Glitch Text - mehr Kontrast */
+:root:not(.dark) .glitch-text {
+    text-shadow: 2px 0px 0px rgba(50, 215, 75, 0.3), -2px 0px 0px rgba(124, 58, 237, 0.3);
+}
+
+/* Neon Shadows - staerkere, sichtbare Schatten */
+:root:not(.dark) .neon-shadow-purple {
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.2);
+}
+
+:root:not(.dark) .neon-shadow-green {
+    box-shadow: 0 4px 20px rgba(50, 215, 75, 0.2);
+}
+
+/* Glass Card - klarer Hintergrund */
+:root:not(.dark) .glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Bento Card hover */
+:root:not(.dark) .bento-card:hover {
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Partikel im Light Mode reduzieren */
+:root:not(.dark) .particle {
+    opacity: 0.2;
+}
+
+/* Scrollbar */
+:root:not(.dark) ::-webkit-scrollbar-thumb {
+    background: rgba(124, 58, 237, 0.4);
+}
+
+:root:not(.dark) ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb:hover {
+    background: rgba(124, 58, 237, 0.6);
+}
