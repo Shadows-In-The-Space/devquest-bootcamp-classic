@@ -76,7 +76,7 @@
   }
 
   .bento-card {
-    @apply bg-white dark:bg-brand-card p-6 rounded-3xl border border-gray-200 dark:border-white/5 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-bento-gradient;
+    @apply bg-white dark:bg-brand-card p-6 rounded-3xl border border-gray-200 dark:border-white/5 shadow-xl hover:shadow-2xl hover:bg-bento-gradient;
   }
 
   .glass-card {
@@ -537,7 +537,9 @@
 
 .card-3d {
     transform-style: preserve-3d;
-    transition: transform 0.15s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    /* Exclude transform from CSS transition - JS TiltEffect handles it directly */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+    will-change: transform;
     cursor: pointer;
 }
 
