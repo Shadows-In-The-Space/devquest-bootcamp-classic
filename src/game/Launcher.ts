@@ -92,10 +92,19 @@ export class GameLauncher {
     startGame() {
         this.showScreen('play');
 
-        // Resize canvas to fit container
-        const container = this.canvas.parentElement!;
-        this.canvas.width = container.clientWidth;
-        this.canvas.height = container.clientHeight;
+        // Set canvas to classic arcade aspect ratio (centered)
+        const targetWidth = 800;
+        const targetHeight = 600;
+
+        this.canvas.width = targetWidth;
+        this.canvas.height = targetHeight;
+
+        // Center canvas with CSS
+        this.canvas.style.margin = 'auto';
+        this.canvas.style.display = 'block';
+        this.canvas.style.maxWidth = '100%';
+        this.canvas.style.maxHeight = '100%';
+        this.canvas.style.objectFit = 'contain';
 
         // Reset HUD
         this.updateScore(0);
@@ -123,12 +132,74 @@ export class GameLauncher {
     updateLives(lives: number) {
         const livesEl = document.getElementById('hud-lives');
         if (livesEl) {
-            // Pixel Ship SVG (Green)
-            const shipSvg = `
-            <svg width="24" height="24" viewBox="0 0 16 16" fill="#4ade80" class="drop-shadow-[0_0_4px_rgba(74,222,128,0.6)]">
-                <path d="M6 2h4v2H6z M4 4h8v2H4z M2 6h12v6H2z M0 12h16v2H0z"/>
-            </svg>`;
-            livesEl.innerHTML = shipSvg.repeat(Math.max(0, lives));
+            // Clear previous
+            livesEl.textContent = '';
+
+            // Create ship icons (safe DOM creation)
+            for (let i = 0; i < Math.max(0, lives); i++) {
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('width', '28');
+                svg.setAttribute('height', '28');
+                svg.setAttribute('viewBox', '0 0 32 32');
+                svg.setAttribute('class', 'drop-shadow-[0_0_6px_rgba(74,222,128,0.8)]');
+
+                // Cockpit
+                const cockpit = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                cockpit.setAttribute('x', '14');
+                cockpit.setAttribute('y', '8');
+                cockpit.setAttribute('width', '4');
+                cockpit.setAttribute('height', '4');
+                cockpit.setAttribute('fill', '#4ade80');
+
+                // Main Wings
+                const wings = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                wings.setAttribute('x', '8');
+                wings.setAttribute('y', '16');
+                wings.setAttribute('width', '16');
+                wings.setAttribute('height', '8');
+                wings.setAttribute('fill', '#4ade80');
+
+                // Wide Base
+                const base = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                base.setAttribute('x', '4');
+                base.setAttribute('y', '20');
+                base.setAttribute('width', '24');
+                base.setAttribute('height', '4');
+                base.setAttribute('fill', '#4ade80');
+
+                // Engine Left
+                const engineL = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                engineL.setAttribute('x', '6');
+                engineL.setAttribute('y', '24');
+                engineL.setAttribute('width', '6');
+                engineL.setAttribute('height', '2');
+                engineL.setAttribute('fill', '#22c55e');
+
+                // Engine Right
+                const engineR = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                engineR.setAttribute('x', '20');
+                engineR.setAttribute('y', '24');
+                engineR.setAttribute('width', '6');
+                engineR.setAttribute('height', '2');
+                engineR.setAttribute('fill', '#22c55e');
+
+                // Front Tip
+                const tip = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                tip.setAttribute('x', '15');
+                tip.setAttribute('y', '4');
+                tip.setAttribute('width', '2');
+                tip.setAttribute('height', '4');
+                tip.setAttribute('fill', '#86efac');
+
+                svg.appendChild(cockpit);
+                svg.appendChild(wings);
+                svg.appendChild(base);
+                svg.appendChild(engineL);
+                svg.appendChild(engineR);
+                svg.appendChild(tip);
+
+                livesEl.appendChild(svg);
+            }
         }
     }
 

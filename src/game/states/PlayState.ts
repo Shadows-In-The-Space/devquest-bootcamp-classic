@@ -19,8 +19,8 @@ export class PlayState implements GameState {
 
     enter(game: Game): void {
         console.log("Entering PlayState");
-        // Setup Game
-        this.player = new Player(game.canvas.width / 2, game.canvas.height - 100);
+        // Setup Game (Player positioned safely above HUD)
+        this.player = new Player(game.canvas.width / 2, game.canvas.height - 120);
         this.currentLevel = 1;
         this.startLevel(game, this.currentLevel);
 
